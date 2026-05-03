@@ -10,11 +10,11 @@
     :root {
       --black: #0a0a0a;
       --white: #fafafa;
-      --off-white: #f0f0f0;
       --warm: #f0eee9;
       --warm2: #e8e4de;
+      --warm3: #ddd9d2;
       --grey-text: #888;
-      --border: rgba(0,0,0,0.09);
+      --border: rgba(0,0,0,0.08);
       --discord: #5865F2;
     }
     html { scroll-behavior: smooth; }
@@ -22,205 +22,153 @@
 
     /* CURSOR */
     .cursor { position: fixed; width: 8px; height: 8px; background: var(--black); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width 0.22s, height 0.22s; mix-blend-mode: difference; }
-    .cursor.expand { width: 34px; height: 34px; }
-
-    /* LOGO SVG shared */
-    .logo-svg-dark path, .logo-svg-dark ellipse { }
+    .cursor.expand { width: 32px; height: 32px; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 28px 52px; background: rgba(250,250,250,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 26px 52px; background: rgba(250,250,250,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { color: var(--black); text-decoration: none; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.4; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 1; }
     .nav-right { display: flex; gap: 10px; align-items: center; }
-    .nav-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 22px; border: none; transition: all 0.2s; }
+    .nav-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 22px; border: none; transition: all 0.2s; text-decoration: none; display: flex; align-items: center; gap: 6px; }
     .nav-btn-outline { background: none; border: 1px solid var(--border); color: var(--black); }
     .nav-btn-outline:hover { border-color: var(--black); }
     .nav-btn-solid { background: var(--black); color: var(--white); }
     .nav-btn-solid:hover { background: #222; }
 
     /* HERO */
-    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; padding-top: 76px; }
-    .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 64px 52px 64px; position: relative; z-index: 2; background: var(--white); }
-    .hero-eyebrow { font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.9s 0.1s forwards; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 140px 52px 100px; position: relative; overflow: hidden; }
+    .hero::after { content: 'NØWN'; position: absolute; right: -20px; bottom: -80px; font-family: 'Bebas Neue', sans-serif; font-size: clamp(180px,28vw,420px); color: rgba(0,0,0,0.04); letter-spacing: -0.02em; pointer-events: none; line-height: 1; user-select: none; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.9s 0.1s forwards; }
     .hero-logo-block { opacity: 0; animation: fadeUp 0.9s 0.25s forwards; margin-bottom: 24px; }
-    .hero-tagline-line { font-size: clamp(13px,1.2vw,16px); color: var(--grey-text); letter-spacing: 0.05em; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.9s 0.42s forwards; max-width: 340px; line-height: 1.8; }
-    .hero-btns { display: flex; gap: 10px; align-items: center; opacity: 0; animation: fadeUp 0.9s 0.56s forwards; flex-wrap: wrap; margin-bottom: 48px; }
-    .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-top: 1px solid var(--border); padding-top: 32px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
-    .hero-stat { padding-right: 24px; }
-    .hero-stat + .hero-stat { border-left: 1px solid var(--border); padding-left: 24px; padding-right: 0; }
-    .hero-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; line-height: 1; margin-bottom: 4px; }
-    .hero-stat-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-text); }
-    .hero-right { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; position: relative; }
-    .hero-img { position: relative; overflow: hidden; background: var(--warm2); display: flex; align-items: center; justify-content: center; }
-    .hero-img-main { grid-column: 1; grid-row: 1 / 3; }
-    .hero-img-inner { position: absolute; inset: 0; transition: transform 0.8s ease; }
-    .hero-img:hover .hero-img-inner { transform: scale(1.04); }
-    .hi1 { background: linear-gradient(160deg,#d8d3cc 0%,#c4bdb4 100%); }
-    .hi2 { background: linear-gradient(160deg,#e2ddd7 0%,#cec9c2 100%); }
-    .hi3 { background: linear-gradient(160deg,#dbd5ce 0%,#c8c1b8 100%); }
-    .hi4 { background: linear-gradient(160deg,#e5e0da 0%,#d2cbc3 100%); }
-    .hero-img-label { position: absolute; bottom: 16px; left: 16px; z-index: 2; font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 0.2em; color: rgba(0,0,0,0.3); }
-    .hero-img-tag { position: absolute; top: 14px; left: 14px; z-index: 2; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid rgba(0,0,0,0.15); color: rgba(0,0,0,0.45); padding: 4px 9px; background: rgba(255,255,255,0.75); }
-    .hero-img-brand { position: absolute; bottom: 16px; right: 16px; z-index: 2; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(0,0,0,0.35); text-align: right; }
-    .hero-img-ph { width: 55%; height: 70%; display: flex; flex-direction: column; gap: 10px; justify-content: center; align-items: stretch; }
-    .ph-line { height: 2px; background: rgba(0,0,0,0.07); border-radius: 1px; }
+    .hero-tagline { font-size: clamp(13px,1.3vw,17px); color: var(--grey-text); line-height: 1.85; margin-bottom: 48px; max-width: 400px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 64px; opacity: 0; animation: fadeUp 0.9s 0.55s forwards; }
     .btn-solid { background: var(--black); color: var(--white); padding: 15px 36px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border: none; transition: background 0.2s, transform 0.2s; }
     .btn-solid:hover { background: #222; transform: translateY(-1px); }
-    .btn-outline { border: 1px solid rgba(0,0,0,0.22); color: var(--black); padding: 14px 36px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; background: none; transition: border-color 0.2s, transform 0.2s; }
-    .btn-outline:hover { border-color: var(--black); transform: translateY(-1px); }
-    .btn-discord { background: var(--discord); color: #fff; padding: 14px 28px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; border: none; transition: background 0.2s, transform 0.2s; }
+    .btn-outline-dark { border: 1px solid rgba(0,0,0,0.2); color: var(--black); padding: 14px 36px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; background: none; transition: border-color 0.2s, transform 0.2s; }
+    .btn-outline-dark:hover { border-color: var(--black); transform: translateY(-1px); }
+    .btn-discord { background: var(--discord); color: #fff; padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; border: none; transition: background 0.2s, transform 0.2s; }
     .btn-discord:hover { background: #4752c4; transform: translateY(-1px); }
-    .discord-icon { width: 16px; height: 12px; }
+    .hero-stats { display: flex; gap: 0; border-top: 1px solid var(--border); padding-top: 32px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
+    .hero-stat { padding-right: 40px; }
+    .hero-stat + .hero-stat { border-left: 1px solid var(--border); padding-left: 40px; padding-right: 40px; }
+    .hero-stat:last-child { padding-right: 0; }
+    .hero-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; line-height: 1; margin-bottom: 4px; }
+    .hero-stat-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-text); }
+    .hero-bottom { border-top: 1px solid var(--border); padding-top: 28px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
+    .hero-bottom-text { font-size: 12px; color: var(--grey-text); line-height: 1.7; max-width: 320px; }
+    .hero-bottom-text strong { color: var(--black); font-weight: 500; }
+
+    /* HERO RIGHT */
+    .hero-right { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; }
+    .hi { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .hi-main { grid-column: 1; grid-row: 1/3; }
+    .hi-inner { position: absolute; inset: 0; transition: transform 0.8s ease; }
+    .hi:hover .hi-inner { transform: scale(1.04); }
+    .hi1 { background: linear-gradient(155deg, #d5cfc8, #bfb8b0); }
+    .hi2 { background: linear-gradient(155deg, #ddd8d1, #ccc6be); }
+    .hi3 { background: linear-gradient(155deg, #e0dbd4, #d0c9c1); }
+    .hi-label { position: absolute; bottom: 14px; left: 14px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(0,0,0,0.35); z-index: 2; }
+    .hi-tag { position: absolute; top: 14px; right: 14px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; background: rgba(255,255,255,0.8); color: rgba(0,0,0,0.5); padding: 4px 9px; z-index: 2; border: 1px solid rgba(0,0,0,0.1); }
+    .hi-lines { width: 52%; display: flex; flex-direction: column; gap: 9px; }
+    .hi-line { height: 2px; background: rgba(0,0,0,0.08); border-radius: 1px; }
 
     /* MARQUEE */
-    .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 0; }
-    .marquee-track { display: flex; animation: marquee 24s linear infinite; white-space: nowrap; }
-    .mi { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.22em; color: #bbb; padding: 0 38px; text-transform: uppercase; }
-    .ms { color: rgba(0,0,0,0.15); }
+    .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 13px 0; background: var(--white); }
+    .marquee-track { display: flex; animation: marquee 26s linear infinite; white-space: nowrap; }
+    .mi { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #c0bbb4; padding: 0 36px; text-transform: uppercase; }
+    .ms { color: rgba(0,0,0,0.12); padding: 0 4px; }
 
-    /* STATS */
-    .stats-bar { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
-    .stat { background: var(--warm); padding: 44px 36px; text-align: center; }
-    .stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 58px; letter-spacing: 0.02em; line-height: 1; margin-bottom: 8px; }
-    .stat-l { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey-text); }
+    /* ABOUT STRIP */
+    .about-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; border-top: 1px solid var(--border); }
+    .about-cell { padding: 52px 44px; background: var(--warm); }
+    .about-cell:nth-child(2) { background: var(--warm2); }
+    .about-cell:nth-child(3) { background: var(--warm3); }
+    .about-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: var(--grey-text); margin-bottom: 20px; }
+    .about-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; margin-bottom: 14px; line-height: 1; }
+    .about-text { font-size: 13px; line-height: 1.85; color: #666; max-width: 280px; }
 
     /* SECTION UTILS */
-    .sec { padding: 104px 52px; border-top: 1px solid var(--border); }
-    .sh { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; }
+    .sec { padding: 100px 52px; border-top: 1px solid var(--border); }
+    .sh { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
     .eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 14px; }
-    .stitle { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px,6vw,82px); line-height: 0.92; letter-spacing: 0.02em; }
+    .stitle { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px,5.5vw,76px); line-height: 0.92; letter-spacing: 0.02em; }
     .slink { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-text); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
     .slink::after { content: '→'; }
     .slink:hover { color: var(--black); }
 
-    /* BRANDS */
-    .brands-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
-    .bc { aspect-ratio: 3/4; position: relative; overflow: hidden; background: var(--warm); }
-    .bc-inner { position: absolute; inset: 0; transition: transform 0.6s ease; display: flex; align-items: center; justify-content: center; }
-    .bc:hover .bc-inner { transform: scale(1.05); }
-    .bc1 { background: linear-gradient(150deg,#e8e4de,#d8d3cc); }
-    .bc2 { background: linear-gradient(150deg,#e2ddd7,#cec9c2); }
-    .bc3 { background: linear-gradient(150deg,#ebe7e1,#dbd6cf); }
-    .bc4 { background: linear-gradient(150deg,#e5e1db,#d5d0c9); }
-    .bc-ov { position: absolute; inset: 0; background: linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 52%); }
-    .bc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; z-index: 2; }
-    .bc-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.07em; margin-bottom: 2px; color: #fff; }
-    .bc-sub { font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); text-transform: uppercase; }
-    .bc-top { position: absolute; top: 0; left: 0; right: 0; padding: 14px 16px; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; }
-    .bc-badge { border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 9px; background: rgba(0,0,0,0.2); }
-    .bc-follow { background: rgba(255,255,255,0.9); color: var(--black); border: none; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px; opacity: 0; transition: opacity 0.2s; }
-    .bc:hover .bc-follow { opacity: 1; }
-    .bc-ph { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: rgba(0,0,0,0.12); }
+    /* BRANDS — EMPTY STATE */
+    .brands-empty { background: var(--warm); padding: 80px 52px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .brands-empty-icon { width: 56px; height: 56px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 4px; }
+    .brands-empty-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; }
+    .brands-empty-sub { font-size: 14px; color: var(--grey-text); line-height: 1.8; max-width: 380px; }
+    .brands-empty-btns { display: flex; gap: 10px; margin-top: 8px; }
 
-    /* DISCOVER FEED */
-    .discover-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .df-card { background: var(--warm); position: relative; overflow: hidden; }
-    .df-card-tall { grid-row: span 2; }
-    .df-img { width: 100%; aspect-ratio: 4/3; background: var(--warm2); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-    .df-card-tall .df-img { aspect-ratio: unset; height: 100%; min-height: 480px; }
-    .df-img-ph { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: rgba(0,0,0,0.1); }
-    .df-grad { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%); }
-    .df-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; color: #fff; }
-    .df-brand { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; }
-    .df-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; line-height: 1.1; }
-    .df-body { padding: 20px 18px; }
-    .df-body-brand { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 6px; }
-    .df-body-text { font-size: 13px; line-height: 1.75; color: #555; }
-    .df-body-meta { margin-top: 14px; display: flex; justify-content: space-between; align-items: center; }
-    .df-tag { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid var(--border); padding: 3px 8px; color: var(--grey-text); }
-    .df-actions { display: flex; gap: 12px; align-items: center; }
-    .df-like, .df-save { background: none; border: none; font-size: 12px; color: var(--grey-text); letter-spacing: 0.06em; transition: color 0.2s; display: flex; align-items: center; gap: 4px; }
-    .df-like:hover { color: #c0392b; }
-    .df-save:hover { color: var(--black); }
-    .df-like.liked { color: #c0392b; }
-    .df-save.saved { color: var(--black); }
-
-    /* SPOTLIGHT — Brand stories */
-    .spotlight-scroll { display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 2px; }
-    .spotlight-scroll::-webkit-scrollbar { display: none; }
-    .sp-card { min-width: 340px; background: var(--warm); padding: 40px 36px; scroll-snap-align: start; position: relative; overflow: hidden; flex-shrink: 0; }
-    .sp-num { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(0,0,0,0.05); position: absolute; top: 8px; right: 16px; line-height: 1; }
-    .sp-eyebrow { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 24px; }
-    .sp-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; margin-bottom: 12px; }
-    .sp-quote { font-size: 14px; line-height: 1.8; color: #555; margin-bottom: 20px; font-style: italic; }
-    .sp-meta { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-text); }
-    .sp-follow-btn { margin-top: 20px; background: var(--black); color: var(--white); border: none; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 20px; transition: background 0.2s; }
-    .sp-follow-btn:hover { background: #333; }
-    .sp-follow-btn.following { background: var(--warm2); color: var(--black); border: 1px solid var(--border); }
-    .spotlight-nav { display: flex; gap: 8px; margin-top: 20px; }
-    .sp-nav-btn { width: 28px; height: 28px; border: 1px solid var(--border); background: none; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-    .sp-nav-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
-
-    /* BACK A BRAND */
-    .back-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .back-card { background: var(--warm); padding: 36px 32px; position: relative; overflow: hidden; }
-    .back-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-    .back-brand-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; }
-    .back-status { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--border); color: var(--grey-text); }
-    .back-status.live { border-color: #2ecc71; color: #27ae60; }
-    .back-desc { font-size: 13px; line-height: 1.75; color: #555; margin-bottom: 20px; }
-    .back-bar-wrap { margin-bottom: 10px; }
-    .back-bar-track { height: 3px; background: var(--warm2); width: 100%; }
-    .back-bar-fill { height: 3px; background: var(--black); transition: width 0.8s ease; }
-    .back-bar-meta { display: flex; justify-content: space-between; margin-top: 8px; }
-    .back-count { font-size: 11px; letter-spacing: 0.08em; color: var(--grey-text); }
-    .back-count strong { color: var(--black); font-weight: 500; }
-    .back-btn { margin-top: 20px; width: 100%; background: var(--black); color: var(--white); border: none; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 13px; transition: background 0.2s; }
-    .back-btn:hover { background: #222; }
-    .back-btn.backed { background: var(--warm2); color: var(--black); border: 1px solid var(--border); }
-
-    /* DROP ALERTS */
-    .drops-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
-    .drop-card { background: var(--warm); padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; }
-    .drop-top { display: flex; justify-content: space-between; align-items: flex-start; }
-    .drop-brand { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.04em; }
-    .drop-date { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-text); }
-    .drop-name { font-size: 13px; color: #555; line-height: 1.6; }
-    .drop-alert-btn { margin-top: auto; background: none; border: 1px solid var(--border); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 9px 16px; transition: all 0.2s; display: flex; align-items: center; gap: 6px; width: fit-content; }
-    .drop-alert-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
-    .drop-alert-btn.alerted { background: var(--black); color: var(--white); border-color: var(--black); }
-    .drop-bell { font-size: 12px; }
-
-    /* COMMUNITY / DISCORD BANNER */
-    .community-banner { padding: 80px 52px; background: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .cb-left {}
-    .cb-eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
-    .cb-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px,6vw,80px); line-height: 0.92; letter-spacing: 0.02em; color: var(--white); margin-bottom: 20px; }
-    .cb-sub { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,0.5); max-width: 400px; margin-bottom: 36px; }
-    .cb-right { display: flex; flex-direction: column; gap: 2px; }
-    .cb-feature { background: rgba(255,255,255,0.04); padding: 22px 24px; display: flex; align-items: flex-start; gap: 16px; border: 1px solid rgba(255,255,255,0.06); }
-    .cb-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-    .cb-feature-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 4px; letter-spacing: 0.02em; }
-    .cb-feature-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+    /* COMING SOON GRID */
+    .coming-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+    .coming-card { background: var(--warm); padding: 36px 28px; display: flex; flex-direction: column; gap: 0; position: relative; overflow: hidden; }
+    .coming-card-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: rgba(0,0,0,0.04); position: absolute; top: 8px; right: 14px; line-height: 1; }
+    .coming-card-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 20px; }
+    .coming-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .coming-card-text { font-size: 13px; line-height: 1.75; color: #666; margin-bottom: 24px; flex: 1; }
+    .coming-card-btn { background: none; border: 1px solid var(--border); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 18px; transition: all 0.2s; width: fit-content; }
+    .coming-card-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+    .coming-card-btn.notified { background: var(--black); color: var(--white); border-color: var(--black); }
 
     /* CATEGORIES */
     .cat-list { display: flex; flex-direction: column; }
-    .cat-row { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--border); transition: padding-left 0.3s; }
+    .cat-row { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--border); transition: padding-left 0.3s; }
     .cat-row:first-child { border-top: 1px solid var(--border); }
     .cat-row:hover { padding-left: 16px; }
     .cat-row:hover .cat-rn { color: var(--black); }
     .cat-row:hover .cat-ar { opacity: 1; transform: translateX(4px); }
-    .cat-rn { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px,4.5vw,58px); letter-spacing: 0.04em; color: rgba(0,0,0,0.5); transition: color 0.3s; }
+    .cat-rn { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px,4.5vw,58px); letter-spacing: 0.04em; color: rgba(0,0,0,0.45); transition: color 0.3s; }
     .cat-r { display: flex; align-items: center; gap: 32px; }
     .cat-cnt { font-size: 11px; letter-spacing: 0.1em; color: var(--grey-text); }
-    .cat-ar { color: var(--black); font-size: 18px; opacity: 0; transition: opacity 0.3s,transform 0.3s; }
+    .cat-ar { color: var(--black); font-size: 18px; opacity: 0; transition: opacity 0.3s, transform 0.3s; }
+
+    /* HOW IT WORKS */
+    .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .how-card { background: var(--warm); padding: 48px 40px; position: relative; overflow: hidden; transition: background 0.3s; }
+    .how-card:hover { background: var(--warm2); }
+    .how-n { font-family: 'Bebas Neue', sans-serif; font-size: 88px; color: rgba(0,0,0,0.05); position: absolute; top: 8px; right: 14px; line-height: 1; }
+    .how-t { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; margin-bottom: 12px; }
+    .how-d { font-size: 14px; line-height: 1.85; color: #666; }
+
+    /* COMMUNITY / DISCORD */
+    .community-banner { background: var(--black); padding: 96px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cb-eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+    .cb-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px,6vw,80px); line-height: 0.92; color: var(--white); margin-bottom: 20px; }
+    .cb-sub { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,0.45); max-width: 400px; margin-bottom: 36px; }
+    .cb-features { display: flex; flex-direction: column; gap: 2px; }
+    .cb-feat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); padding: 20px 22px; display: flex; align-items: flex-start; gap: 14px; }
+    .cb-feat-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .cb-feat-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
+    .cb-feat-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    /* APPLY STRIP */
+    .apply-strip { background: var(--warm); padding: 80px 52px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); gap: 60px; }
+    .apply-strip-left { flex: 1; }
+    .apply-strip-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px,5vw,64px); line-height: 0.92; margin-bottom: 16px; }
+    .apply-strip-sub { font-size: 14px; line-height: 1.8; color: var(--grey-text); max-width: 420px; }
+    .apply-strip-right { flex-shrink: 0; }
 
     /* NEWSLETTER */
-    .newsletter-sec { padding: 80px 52px; background: var(--warm); border-top: 1px solid var(--border); }
-    .nl-inner { max-width: 560px; margin: 0 auto; text-align: center; }
-    .nl-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px,5vw,64px); letter-spacing: 0.02em; margin-bottom: 14px; }
-    .nl-sub { font-size: 14px; line-height: 1.8; color: var(--grey-text); margin-bottom: 32px; }
+    .nl-sec { padding: 80px 52px; border-top: 1px solid var(--border); }
+    .nl-inner { max-width: 520px; margin: 0 auto; text-align: center; }
+    .nl-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px,4.5vw,60px); letter-spacing: 0.02em; margin-bottom: 12px; }
+    .nl-sub { font-size: 14px; line-height: 1.8; color: var(--grey-text); margin-bottom: 28px; }
     .nl-form { display: flex; gap: 2px; }
-    .nl-input { flex: 1; background: var(--white); border: none; border-bottom: 2px solid transparent; padding: 16px 18px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; outline: none; transition: border-color 0.2s; }
+    .nl-input { flex: 1; background: var(--warm); border: none; border-bottom: 2px solid transparent; padding: 15px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; outline: none; transition: border-color 0.2s; }
     .nl-input:focus { border-bottom-color: var(--black); }
-    .nl-input::placeholder { color: rgba(0,0,0,0.25); }
-    .nl-btn { background: var(--black); color: var(--white); border: none; padding: 16px 28px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; transition: background 0.2s; white-space: nowrap; }
+    .nl-input::placeholder { color: rgba(0,0,0,0.22); }
+    .nl-btn { background: var(--black); color: var(--white); border: none; padding: 15px 26px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s; white-space: nowrap; }
     .nl-btn:hover { background: #222; }
+    .nl-confirm { margin-top: 12px; font-size: 12px; color: var(--grey-text); display: none; }
 
     /* FOOTER */
-    footer { padding: 72px 52px 36px; border-top: 1px solid var(--border); background: var(--white); }
-    .ft { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 52px; margin-bottom: 56px; }
+    footer { padding: 64px 52px 32px; border-top: 1px solid var(--border); }
+    .ft { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 52px; }
     .fl { font-size: 13px; line-height: 1.85; color: var(--grey-text); max-width: 230px; margin-top: 16px; }
     .fct { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(0,0,0,0.28); margin-bottom: 16px; }
     .flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -231,90 +179,91 @@
     .fso { display: flex; gap: 20px; }
     .fso a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.28); text-decoration: none; transition: color 0.2s; }
     .fso a:hover { color: var(--black); }
-
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.75s ease, transform 0.75s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    .fso a.discord-link { color: var(--discord) !important; opacity: 0.7; }
+    .fso a.discord-link:hover { opacity: 1; }
 
     /* BRAND PORTAL */
     .brand-portal { position: fixed; inset: 0; z-index: 200; background: #0a0a0a; overflow-y: auto; transform: translateX(100%); transition: transform 0.65s cubic-bezier(0.76,0,0.24,1); }
     .brand-portal.open { transform: translateX(0); }
     body.portal-open { overflow: hidden; }
-    .portal-nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 26px 52px; background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .portal-nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 52px; background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.07); }
     .portal-nav-center { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-    .portal-label { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
-    .portal-close { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: border-color 0.2s; }
-    .portal-close:hover { border-color: rgba(255,255,255,0.5); }
+    .portal-label { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .portal-close { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s; }
+    .portal-close:hover { border-color: rgba(255,255,255,0.45); color: var(--white); }
     .portal-hero { padding: 80px 52px 72px; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .portal-eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
-    .portal-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px,7vw,92px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 22px; color: var(--white); }
-    .portal-sub { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,0.45); max-width: 400px; }
-    .portal-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .pstat { background: rgba(255,255,255,0.04); padding: 34px 26px; text-align: center; }
-    .pstat-n { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; margin-bottom: 6px; color: var(--white); }
-    .pstat-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+    .portal-eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+    .portal-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px,6.5vw,88px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 20px; color: var(--white); }
+    .portal-sub { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,0.4); max-width: 400px; }
+    .portal-values { display: flex; flex-direction: column; gap: 2px; }
+    .pval { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 22px 24px; display: flex; align-items: flex-start; gap: 14px; }
+    .pval-icon { width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; color: rgba(255,255,255,0.4); }
+    .pval-title { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 3px; }
+    .pval-desc { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; }
     .portal-section { padding: 72px 52px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .portal-section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px,4vw,52px); letter-spacing: 0.02em; margin-bottom: 44px; color: var(--white); }
+    .portal-section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4vw,50px); letter-spacing: 0.02em; margin-bottom: 44px; color: var(--white); }
     .portal-how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .portal-how-card { background: rgba(255,255,255,0.03); padding: 44px 36px; position: relative; overflow: hidden; transition: background 0.3s; }
-    .portal-how-card:hover { background: rgba(255,255,255,0.06); }
-    .phow-n { font-family: 'Bebas Neue', sans-serif; font-size: 90px; color: rgba(255,255,255,0.04); position: absolute; top: 8px; right: 14px; line-height: 1; }
+    .phow { background: rgba(255,255,255,0.03); padding: 44px 36px; position: relative; overflow: hidden; transition: background 0.3s; }
+    .phow:hover { background: rgba(255,255,255,0.05); }
+    .phow-n { font-family: 'Bebas Neue', sans-serif; font-size: 88px; color: rgba(255,255,255,0.04); position: absolute; top: 8px; right: 14px; line-height: 1; }
     .phow-t { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; margin-bottom: 12px; color: var(--white); }
-    .phow-d { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.4); }
+    .phow-d { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.38); }
     .portal-apply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .apply-pitch { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.4); margin-bottom: 32px; max-width: 400px; }
+    .apply-intro { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.38); margin-bottom: 32px; max-width: 400px; }
     .pcriteria { display: flex; flex-direction: column; }
     .pcrit { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .pcrit:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-    .pcrit-icon { width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 2px; color: rgba(255,255,255,0.4); }
-    .pcrit-t strong { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 3px; }
-    .pcrit-t span { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+    .pcrit-icon { width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 2px; color: rgba(255,255,255,0.35); }
+    .pcrit-t strong { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); margin-bottom: 3px; }
+    .pcrit-t span { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.6; }
     .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
     .fg { display: flex; flex-direction: column; }
-    .fg label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.35); padding: 14px 18px 7px; background: rgba(255,255,255,0.04); }
-    .fg input, .fg select, .fg textarea { background: rgba(255,255,255,0.04); border: none; border-bottom: 2px solid transparent; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; padding: 0 18px 16px; outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none; }
+    .fg label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 13px 16px 6px; background: rgba(255,255,255,0.04); }
+    .fg input, .fg select, .fg textarea { background: rgba(255,255,255,0.04); border: none; border-bottom: 2px solid transparent; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; padding: 0 16px 14px; outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none; }
     .fg textarea { resize: none; height: 108px; padding-top: 6px; }
-    .fg select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.4' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; padding-right: 42px; }
+    .fg select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.4' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
     .fg select option { background: #1a1a1a; }
-    .fg input:focus, .fg select:focus, .fg textarea:focus { border-bottom-color: rgba(255,255,255,0.4); }
-    .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.15); }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-bottom-color: rgba(255,255,255,0.35); }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.13); }
     .ffull { grid-column: 1/-1; }
-    .fsub { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.04); padding: 20px 18px; margin-top: 2px; }
-    .fnote { font-size: 12px; color: rgba(255,255,255,0.3); max-width: 210px; line-height: 1.6; }
-    .bsub { background: var(--white); color: var(--black); border: none; padding: 13px 32px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
+    .fsub { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.04); padding: 20px 16px; margin-top: 2px; }
+    .fnote { font-size: 12px; color: rgba(255,255,255,0.28); max-width: 200px; line-height: 1.6; }
+    .bsub { background: var(--white); color: var(--black); border: none; padding: 13px 30px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
     .bsub:hover { background: #eee; transform: translateY(-1px); }
-    .form-success { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px; background: rgba(255,255,255,0.03); }
+    .form-success { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 72px 40px; background: rgba(255,255,255,0.03); }
     .form-success.show { display: flex; }
-    .suc-icon { width: 52px; height: 52px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 20px; color: var(--white); }
-    .suc-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.06em; margin-bottom: 12px; color: var(--white); }
-    .suc-sub { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 270px; }
+    .suc-icon { width: 48px; height: 48px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 20px; color: var(--white); }
+    .suc-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.06em; margin-bottom: 10px; color: var(--white); }
+    .suc-sub { font-size: 14px; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 270px; }
 
-    @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
     @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 48px 24px 48px; }
-      .hero-right { height: 72vw; }
-      .hero-img-main { grid-row: 1; }
+      .hero { padding: 120px 24px 80px; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+      .hero-stat + .hero-stat { border-left: none; padding-left: 0; }
       .sec { padding: 72px 24px; }
-      .brands-grid, .drops-grid { grid-template-columns: 1fr 1fr; }
-      .discover-grid { grid-template-columns: 1fr; }
-      .df-card-tall { grid-row: span 1; }
-      .back-grid { grid-template-columns: 1fr; }
-      .community-banner { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .about-strip { grid-template-columns: 1fr; }
+      .coming-grid { grid-template-columns: 1fr 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .community-banner { grid-template-columns: 1fr; padding: 64px 24px; gap: 44px; }
+      .apply-strip { flex-direction: column; padding: 64px 24px; gap: 32px; }
       .ft { grid-template-columns: 1fr 1fr; }
       .nl-form { flex-direction: column; }
-      .newsletter-sec { padding: 60px 24px; }
+      .nl-sec { padding: 64px 24px; }
       .portal-nav { padding: 18px 24px; }
-      .portal-hero { grid-template-columns: 1fr; padding: 72px 24px 56px; gap: 36px; }
-      .portal-section { padding: 56px 24px; }
+      .portal-hero { grid-template-columns: 1fr; padding: 64px 24px 52px; gap: 36px; }
+      .portal-section { padding: 52px 24px; }
       .portal-how-grid { grid-template-columns: 1fr; }
       .portal-apply-grid { grid-template-columns: 1fr; gap: 44px; }
       .frow { grid-template-columns: 1fr; }
-      .spotlight-scroll { padding-bottom: 0; }
     }
   </style>
 </head>
@@ -332,14 +281,13 @@
       </svg>
     </a>
     <ul class="nav-links">
-      <li><a href="#brands">Brands</a></li>
-      <li><a href="#discover">Discover</a></li>
-      <li><a href="#community">Community</a></li>
       <li><a href="#shop">Shop</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#about">About</a></li>
     </ul>
     <div class="nav-right">
-      <a href="https://discord.gg" target="_blank" class="nav-btn nav-btn-outline" style="display:flex;align-items:center;gap:6px;text-decoration:none;">
-        <svg class="discord-icon" viewBox="0 0 16 12" fill="none"><path d="M13.55 1.02A13.27 13.27 0 0 0 10.3 0c-.14.25-.3.6-.41.86a12.3 12.3 0 0 0-3.78 0A8.64 8.64 0 0 0 5.7 0 13.32 13.32 0 0 0 2.44 1.02 14.06 14.06 0 0 0 0 10.27a13.4 13.4 0 0 0 4.1 2.07c.33-.45.63-.93.88-1.44a8.7 8.7 0 0 1-1.38-.66l.34-.26a9.56 9.56 0 0 0 8.12 0l.34.26c-.44.26-.9.48-1.38.66.25.51.55.99.88 1.44A13.36 13.36 0 0 0 16 10.27 14 14 0 0 0 13.55 1.02ZM5.34 8.41c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.83 0 1.51.75 1.49 1.67 0 .92-.66 1.67-1.49 1.67Zm5.32 0c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.84 0 1.51.75 1.49 1.67 0 .92-.65 1.67-1.49 1.67Z" fill="currentColor"/></svg>
+      <a href="https://discord.gg/hPexgMU9mp" target="_blank" class="nav-btn nav-btn-outline">
+        <svg width="14" height="11" viewBox="0 0 16 12" fill="none"><path d="M13.55 1.02A13.27 13.27 0 0 0 10.3 0c-.14.25-.3.6-.41.86a12.3 12.3 0 0 0-3.78 0A8.64 8.64 0 0 0 5.7 0 13.32 13.32 0 0 0 2.44 1.02 14.06 14.06 0 0 0 0 10.27a13.4 13.4 0 0 0 4.1 2.07c.33-.45.63-.93.88-1.44a8.7 8.7 0 0 1-1.38-.66l.34-.26a9.56 9.56 0 0 0 8.12 0l.34.26c-.44.26-.9.48-1.38.66.25.51.55.99.88 1.44A13.36 13.36 0 0 0 16 10.27 14 14 0 0 0 13.55 1.02ZM5.34 8.41c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.83 0 1.51.75 1.49 1.67 0 .92-.66 1.67-1.49 1.67Zm5.32 0c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.84 0 1.51.75 1.49 1.67 0 .92-.65 1.67-1.49 1.67Z" fill="currentColor"/></svg>
         Discord
       </a>
       <button class="nav-btn nav-btn-solid" onclick="openPortal()">List Your Brand</button>
@@ -348,80 +296,32 @@
 
   <!-- HERO -->
   <section class="hero">
-    <!-- LEFT: text content -->
-    <div class="hero-left">
-      <p class="hero-eyebrow">The Curated Clothing Marketplace</p>
-      <div class="hero-logo-block">
-        <svg style="height:clamp(52px,8vw,108px);display:block;" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#0a0a0a"/>
-          <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#fafafa" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/></g>
-          <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#0a0a0a"/>
-          <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#0a0a0a"/>
-        </svg>
-      </div>
-      <p class="hero-tagline-line">Independent brands, hand-picked by us.<br/>Shop direct. Wear different.</p>
-      <div class="hero-btns">
-        <a href="#shop" class="btn-solid">Shop Now</a>
-        <a href="#discover" class="btn-outline">Discover Brands</a>
-      </div>
-      <!-- inline stats -->
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-n">120+</div>
-          <div class="hero-stat-l">Curated Brands</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-n">38K</div>
-          <div class="hero-stat-l">Community Members</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-n">100%</div>
-          <div class="hero-stat-l">Independent</div>
-        </div>
-      </div>
+    <p class="hero-eyebrow">The Curated Clothing Marketplace</p>
+    <div class="hero-logo-block">
+      <svg style="height:clamp(56px,9.5vw,130px);display:block;" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#0a0a0a"/>
+        <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#fafafa" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/></g>
+        <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#0a0a0a"/>
+        <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#0a0a0a"/>
+      </svg>
     </div>
-
-    <!-- RIGHT: image mosaic -->
-    <div class="hero-right">
-      <!-- tall main image -->
-      <div class="hero-img hero-img-main">
-        <div class="hero-img-inner hi1">
-          <div class="hero-img-ph">
-            <div class="ph-line" style="width:100%"></div>
-            <div class="ph-line" style="width:80%"></div>
-            <div class="ph-line" style="width:90%"></div>
-            <div class="ph-line" style="width:70%"></div>
-            <div class="ph-line" style="width:85%"></div>
-            <div class="ph-line" style="width:60%"></div>
-          </div>
-        </div>
-        <span class="hero-img-tag">New In</span>
-        <span class="hero-img-label">AW '25</span>
-        <span class="hero-img-brand">VØID Studio</span>
+    <p class="hero-tagline">Independent brands, hand-picked by us.<br/>Shop direct. Wear different.</p>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-solid">Shop Now</a>
+      <a href="#about" class="btn-outline-dark">How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n">Curated</div>
+        <div class="hero-stat-l">Every Brand</div>
       </div>
-      <!-- top right -->
-      <div class="hero-img">
-        <div class="hero-img-inner hi2">
-          <div class="hero-img-ph">
-            <div class="ph-line" style="width:90%"></div>
-            <div class="ph-line" style="width:70%"></div>
-            <div class="ph-line" style="width:80%"></div>
-          </div>
-        </div>
-        <span class="hero-img-tag">Trending</span>
-        <span class="hero-img-brand">ØRDER</span>
+      <div class="hero-stat">
+        <div class="hero-stat-n">Direct</div>
+        <div class="hero-stat-l">Shop to Brand</div>
       </div>
-      <!-- bottom right -->
-      <div class="hero-img">
-        <div class="hero-img-inner hi3">
-          <div class="hero-img-ph">
-            <div class="ph-line" style="width:85%"></div>
-            <div class="ph-line" style="width:65%"></div>
-            <div class="ph-line" style="width:75%"></div>
-          </div>
-        </div>
-        <span class="hero-img-label">FW '25</span>
-        <span class="hero-img-brand">Hatch & Hem</span>
+      <div class="hero-stat">
+        <div class="hero-stat-n">100%</div>
+        <div class="hero-stat-l">Independent</div>
       </div>
     </div>
   </section>
@@ -429,335 +329,185 @@
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
-      <span class="mi">Curated Brands</span><span class="mi ms">—</span><span class="mi">Shop Direct</span><span class="mi ms">—</span><span class="mi">Wear Different</span><span class="mi ms">—</span><span class="mi">Independent Labels</span><span class="mi ms">—</span><span class="mi">New Arrivals Daily</span><span class="mi ms">—</span><span class="mi">Exclusive Drops</span><span class="mi ms">—</span><span class="mi">Community First</span><span class="mi ms">—</span>
-      <span class="mi">Curated Brands</span><span class="mi ms">—</span><span class="mi">Shop Direct</span><span class="mi ms">—</span><span class="mi">Wear Different</span><span class="mi ms">—</span><span class="mi">Independent Labels</span><span class="mi ms">—</span><span class="mi">New Arrivals Daily</span><span class="mi ms">—</span><span class="mi">Exclusive Drops</span><span class="mi ms">—</span><span class="mi">Community First</span><span class="mi ms">—</span>
+      <span class="mi">Curated Brands</span><span class="mi ms">—</span>
+      <span class="mi">Shop Direct</span><span class="mi ms">—</span>
+      <span class="mi">Wear Different</span><span class="mi ms">—</span>
+      <span class="mi">Independent Labels</span><span class="mi ms">—</span>
+      <span class="mi">Community First</span><span class="mi ms">—</span>
+      <span class="mi">Launching 2026</span><span class="mi ms">—</span>
+      <span class="mi">Curated Brands</span><span class="mi ms">—</span>
+      <span class="mi">Shop Direct</span><span class="mi ms">—</span>
+      <span class="mi">Wear Different</span><span class="mi ms">—</span>
+      <span class="mi">Independent Labels</span><span class="mi ms">—</span>
+      <span class="mi">Community First</span><span class="mi ms">—</span>
+      <span class="mi">Launching 2026</span><span class="mi ms">—</span>
     </div>
   </div>
 
-  <!-- FEATURED BRANDS -->
-  <section class="sec" id="brands">
-    <div class="sh reveal">
-      <div><p class="eyebrow">Featured This Week</p><h2 class="stitle">Brands<br/>to Know</h2></div>
-      <a href="#" class="slink">All Brands</a>
+  <!-- ABOUT -->
+  <div class="about-strip reveal" id="about">
+    <div class="about-cell">
+      <div class="about-num">01</div>
+      <div class="about-title">Curated,<br/>Not Open</div>
+      <div class="about-text">Every brand on NØWN is personally reviewed and approved by us. We don't let just anyone in — which means when you shop here, you know it's worth your time.</div>
     </div>
-    <div class="brands-grid reveal">
-      <div class="bc">
-        <div class="bc-inner bc1"><span class="bc-ph">AW '25</span></div>
-        <div class="bc-ov"></div>
-        <div class="bc-top"><span class="bc-badge">New</span><button class="bc-follow" onclick="toggleFollow(this)">+ Follow</button></div>
-        <div class="bc-info"><div class="bc-name">VØID Studio</div><div class="bc-sub">Berlin · Minimalist</div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-inner bc2"><span class="bc-ph">FW '25</span></div>
-        <div class="bc-ov"></div>
-        <div class="bc-top"><button class="bc-follow" onclick="toggleFollow(this)">+ Follow</button></div>
-        <div class="bc-info"><div class="bc-name">Hatch & Hem</div><div class="bc-sub">London · Workwear</div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-inner bc3"><span class="bc-ph">SS '26</span></div>
-        <div class="bc-ov"></div>
-        <div class="bc-top"><span class="bc-badge">Trending</span><button class="bc-follow" onclick="toggleFollow(this)">+ Follow</button></div>
-        <div class="bc-info"><div class="bc-name">ØRDER</div><div class="bc-sub">Tokyo · Streetwear</div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-inner bc4"><span class="bc-ph">AW '25</span></div>
-        <div class="bc-ov"></div>
-        <div class="bc-top"><button class="bc-follow" onclick="toggleFollow(this)">+ Follow</button></div>
-        <div class="bc-info"><div class="bc-name">Sable & Son</div><div class="bc-sub">NYC · Tailoring</div></div>
-      </div>
+    <div class="about-cell">
+      <div class="about-num">02</div>
+      <div class="about-title">Shop<br/>Direct</div>
+      <div class="about-text">When you buy on NØWN, your money goes directly to the brand. No middlemen inflating prices. Just you and the people who made the clothes.</div>
     </div>
-  </section>
-
-  <!-- DISCOVER FEED -->
-  <section class="sec" id="discover">
-    <div class="sh reveal">
-      <div><p class="eyebrow">Latest from the Community</p><h2 class="stitle">Discover</h2></div>
-      <a href="#" class="slink">View All</a>
+    <div class="about-cell">
+      <div class="about-num">03</div>
+      <div class="about-title">Community<br/>Built</div>
+      <div class="about-text">NØWN is built around a community of people who care about independent fashion — brands and customers together, connected through Discord and the platform.</div>
     </div>
-    <div class="discover-grid reveal">
-      <div class="df-card df-card-tall">
-        <div class="df-img" style="background:linear-gradient(160deg,#e2ddd7,#c8c2ba);">
-          <span class="df-img-ph">CAMPAIGN</span>
-          <div class="df-grad"></div>
-          <div class="df-overlay">
-            <div class="df-brand">VØID Studio</div>
-            <div class="df-title">Behind the AW25<br/>Collection</div>
-          </div>
-        </div>
-      </div>
-      <div class="df-card">
-        <div class="df-img" style="background:linear-gradient(160deg,#ebe7e1,#d5cfc8);aspect-ratio:4/3;">
-          <span class="df-img-ph">DROP</span>
-          <div class="df-grad"></div>
-          <div class="df-overlay">
-            <div class="df-brand">ØRDER</div>
-            <div class="df-title">New In: The Utility Jacket</div>
-          </div>
-        </div>
-        <div class="df-body">
-          <div class="df-body-brand">ØRDER · Tokyo</div>
-          <div class="df-body-text">Our most-requested piece finally lands. Cut from Japanese ripstop, built to last.</div>
-          <div class="df-body-meta">
-            <span class="df-tag">New Drop</span>
-            <div class="df-actions">
-              <button class="df-like" onclick="toggleLike(this)">♡ 142</button>
-              <button class="df-save" onclick="toggleSave(this)">⊹ Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="df-card">
-        <div class="df-img" style="background:linear-gradient(160deg,#e8e3dc,#d0c9c0);aspect-ratio:4/3;">
-          <span class="df-img-ph">STORY</span>
-          <div class="df-grad"></div>
-          <div class="df-overlay">
-            <div class="df-brand">Hatch & Hem</div>
-            <div class="df-title">How We Make It</div>
-          </div>
-        </div>
-        <div class="df-body">
-          <div class="df-body-brand">Hatch & Hem · London</div>
-          <div class="df-body-text">A look inside our small-batch production process and the people behind the seams.</div>
-          <div class="df-body-meta">
-            <span class="df-tag">Brand Story</span>
-            <div class="df-actions">
-              <button class="df-like" onclick="toggleLike(this)">♡ 89</button>
-              <button class="df-save" onclick="toggleSave(this)">⊹ Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="df-card">
-        <div class="df-img" style="background:linear-gradient(160deg,#ddd8d0,#c4bdb4);aspect-ratio:4/3;">
-          <span class="df-img-ph">EDITORIAL</span>
-          <div class="df-grad"></div>
-          <div class="df-overlay">
-            <div class="df-brand">NØWN Picks</div>
-            <div class="df-title">April's Favourites</div>
-          </div>
-        </div>
-        <div class="df-body">
-          <div class="df-body-brand">NØWN Editorial</div>
-          <div class="df-body-text">This month we're obsessing over texture. Here's what caught our eye across the platform.</div>
-          <div class="df-body-meta">
-            <span class="df-tag">NØWN Picks</span>
-            <div class="df-actions">
-              <button class="df-like" onclick="toggleLike(this)">♡ 203</button>
-              <button class="df-save" onclick="toggleSave(this)">⊹ Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BRAND SPOTLIGHTS -->
-  <section class="sec">
-    <div class="sh reveal">
-      <div><p class="eyebrow">New to NØWN</p><h2 class="stitle">Brand<br/>Spotlights</h2></div>
-      <div class="spotlight-nav">
-        <button class="sp-nav-btn" onclick="scrollSpotlight(-1)">←</button>
-        <button class="sp-nav-btn" onclick="scrollSpotlight(1)">→</button>
-      </div>
-    </div>
-    <div class="spotlight-scroll reveal" id="spotlightScroll">
-      <div class="sp-card">
-        <span class="sp-num">01</span>
-        <div class="sp-eyebrow">Just Approved · Berlin</div>
-        <div class="sp-name">VØID Studio</div>
-        <div class="sp-quote">"We started making clothes in a garage. NØWN gave us the first platform that felt like it was built for brands like us."</div>
-        <div class="sp-meta">Minimalist · Unisex · AW25 Collection Live</div>
-        <button class="sp-follow-btn" onclick="toggleSpFollow(this)">+ Follow Brand</button>
-      </div>
-      <div class="sp-card">
-        <span class="sp-num">02</span>
-        <div class="sp-eyebrow">Just Approved · Tokyo</div>
-        <div class="sp-name">ØRDER</div>
-        <div class="sp-quote">"The curation process made us better. Knowing NØWN was selective made us sharpen everything before we applied."</div>
-        <div class="sp-meta">Streetwear · Unisex · SS26 Collection Live</div>
-        <button class="sp-follow-btn" onclick="toggleSpFollow(this)">+ Follow Brand</button>
-      </div>
-      <div class="sp-card">
-        <span class="sp-num">03</span>
-        <div class="sp-eyebrow">Just Approved · London</div>
-        <div class="sp-name">Hatch & Hem</div>
-        <div class="sp-quote">"Our customers found us through NØWN first. The community here actually cares about where their clothes come from."</div>
-        <div class="sp-meta">Workwear · Menswear · FW25 Collection Live</div>
-        <button class="sp-follow-btn" onclick="toggleSpFollow(this)">+ Follow Brand</button>
-      </div>
-      <div class="sp-card">
-        <span class="sp-num">04</span>
-        <div class="sp-eyebrow">Coming Soon · NYC</div>
-        <div class="sp-name">Sable & Son</div>
-        <div class="sp-quote">"We've been making suits for ten years. We're finally ready to share them with people who'll actually appreciate the craft."</div>
-        <div class="sp-meta">Tailoring · Menswear · Launching May 2026</div>
-        <button class="sp-follow-btn" onclick="toggleSpFollow(this)">+ Follow Brand</button>
-      </div>
-      <div class="sp-card">
-        <span class="sp-num">05</span>
-        <div class="sp-eyebrow">Coming Soon · Copenhagen</div>
-        <div class="sp-name">Fold Studio</div>
-        <div class="sp-quote">"We applied because we believed in what NØWN stands for — clothes made with intention, for people who actually think about what they wear."</div>
-        <div class="sp-meta">Minimalist · Womenswear · Launching June 2026</div>
-        <button class="sp-follow-btn" onclick="toggleSpFollow(this)">+ Follow Brand</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- BACK A BRAND -->
-  <section class="sec" style="background:var(--warm);">
-    <div class="sh reveal">
-      <div><p class="eyebrow">Coming Soon</p><h2 class="stitle">Back a<br/>Brand</h2></div>
-      <a href="#" class="slink">All Upcoming</a>
-    </div>
-    <p style="font-size:14px;line-height:1.85;color:var(--grey-text);max-width:480px;margin-bottom:48px;" class="reveal">Support upcoming brands before they launch. Back a brand to show demand — the more backing they get, the sooner they drop.</p>
-    <div class="back-grid reveal">
-      <div class="back-card">
-        <div class="back-card-header">
-          <div class="back-brand-name">Sable & Son</div>
-          <span class="back-status">NYC · Tailoring</span>
-        </div>
-        <div class="back-desc">Heritage tailoring for the modern wardrobe. Hand-finished suits and separates made in small batches from the best British mills.</div>
-        <div class="back-bar-wrap">
-          <div class="back-bar-track"><div class="back-bar-fill" style="width:68%"></div></div>
-          <div class="back-bar-meta">
-            <span class="back-count"><strong>342</strong> backers</span>
-            <span class="back-count">Launching May '26</span>
-          </div>
-        </div>
-        <button class="back-btn" onclick="toggleBack(this)">Back This Brand</button>
-      </div>
-      <div class="back-card">
-        <div class="back-card-header">
-          <div class="back-brand-name">Fold Studio</div>
-          <span class="back-status">Copenhagen · Minimalist</span>
-        </div>
-        <div class="back-desc">Clean silhouettes. Considered fabrics. Fold makes womenswear that doesn't shout — and that's exactly the point.</div>
-        <div class="back-bar-wrap">
-          <div class="back-bar-track"><div class="back-bar-fill" style="width:41%"></div></div>
-          <div class="back-bar-meta">
-            <span class="back-count"><strong>207</strong> backers</span>
-            <span class="back-count">Launching Jun '26</span>
-          </div>
-        </div>
-        <button class="back-btn" onclick="toggleBack(this)">Back This Brand</button>
-      </div>
-      <div class="back-card">
-        <div class="back-card-header">
-          <div class="back-brand-name">Ruido</div>
-          <span class="back-status">Madrid · Sportswear</span>
-        </div>
-        <div class="back-desc">Performance-first activewear with an aesthetic that doesn't disappear the moment you leave the gym. Built for real movement.</div>
-        <div class="back-bar-wrap">
-          <div class="back-bar-track"><div class="back-bar-fill" style="width:22%"></div></div>
-          <div class="back-bar-meta">
-            <span class="back-count"><strong>89</strong> backers</span>
-            <span class="back-count">Launching Jul '26</span>
-          </div>
-        </div>
-        <button class="back-btn" onclick="toggleBack(this)">Back This Brand</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- DROP ALERTS -->
-  <section class="sec">
-    <div class="sh reveal">
-      <div><p class="eyebrow">Never Miss a Drop</p><h2 class="stitle">Upcoming<br/>Drops</h2></div>
-      <a href="#" class="slink">All Drops</a>
-    </div>
-    <div class="drops-grid reveal">
-      <div class="drop-card">
-        <div class="drop-top">
-          <div class="drop-brand">ØRDER</div>
-          <div class="drop-date">26 Apr</div>
-        </div>
-        <div class="drop-name">SS26 Collection — Full launch. 12 pieces, limited quantities.</div>
-        <button class="drop-alert-btn" onclick="toggleAlert(this)"><span class="drop-bell">🔔</span> Alert Me</button>
-      </div>
-      <div class="drop-card">
-        <div class="drop-top">
-          <div class="drop-brand">VØID Studio</div>
-          <div class="drop-date">2 May</div>
-        </div>
-        <div class="drop-name">The Capsule Series — 6 unisex pieces in two colourways.</div>
-        <button class="drop-alert-btn" onclick="toggleAlert(this)"><span class="drop-bell">🔔</span> Alert Me</button>
-      </div>
-      <div class="drop-card">
-        <div class="drop-top">
-          <div class="drop-brand">Hatch & Hem</div>
-          <div class="drop-date">10 May</div>
-        </div>
-        <div class="drop-name">The Overshirt — Back by popular demand in three new washes.</div>
-        <button class="drop-alert-btn" onclick="toggleAlert(this)"><span class="drop-bell">🔔</span> Alert Me</button>
-      </div>
-      <div class="drop-card">
-        <div class="drop-top">
-          <div class="drop-brand">Sable & Son</div>
-          <div class="drop-date">15 May</div>
-        </div>
-        <div class="drop-name">Launch Drop — First ever collection. Heritage tailoring, 8 pieces.</div>
-        <button class="drop-alert-btn" onclick="toggleAlert(this)"><span class="drop-bell">🔔</span> Alert Me</button>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- SHOP BY CATEGORY -->
   <section class="sec" id="shop">
     <div class="sh reveal">
-      <div><p class="eyebrow">Browse</p><h2 class="stitle">Shop by<br/>Category</h2></div>
-      <a href="#" class="slink">View All</a>
+      <div>
+        <p class="eyebrow">Browse</p>
+        <h2 class="stitle">Shop by<br/>Category</h2>
+      </div>
     </div>
     <div class="cat-list reveal">
-      <div class="cat-row"><span class="cat-rn">Outerwear</span><div class="cat-r"><span class="cat-cnt">142 items</span><span class="cat-ar">→</span></div></div>
-      <div class="cat-row"><span class="cat-rn">Tops & Knitwear</span><div class="cat-r"><span class="cat-cnt">318 items</span><span class="cat-ar">→</span></div></div>
-      <div class="cat-row"><span class="cat-rn">Bottoms</span><div class="cat-r"><span class="cat-cnt">207 items</span><span class="cat-ar">→</span></div></div>
-      <div class="cat-row"><span class="cat-rn">Footwear</span><div class="cat-r"><span class="cat-cnt">89 items</span><span class="cat-ar">→</span></div></div>
-      <div class="cat-row"><span class="cat-rn">Accessories</span><div class="cat-r"><span class="cat-cnt">256 items</span><span class="cat-ar">→</span></div></div>
+      <div class="cat-row"><span class="cat-rn">Outerwear</span><div class="cat-r"><span class="cat-cnt">Coming soon</span><span class="cat-ar">→</span></div></div>
+      <div class="cat-row"><span class="cat-rn">Tops & Knitwear</span><div class="cat-r"><span class="cat-cnt">Coming soon</span><span class="cat-ar">→</span></div></div>
+      <div class="cat-row"><span class="cat-rn">Bottoms</span><div class="cat-r"><span class="cat-cnt">Coming soon</span><span class="cat-ar">→</span></div></div>
+      <div class="cat-row"><span class="cat-rn">Footwear</span><div class="cat-r"><span class="cat-cnt">Coming soon</span><span class="cat-ar">→</span></div></div>
+      <div class="cat-row"><span class="cat-rn">Accessories</span><div class="cat-r"><span class="cat-cnt">Coming soon</span><span class="cat-ar">→</span></div></div>
+    </div>
+  </section>
+
+  <!-- BRANDS EMPTY STATE -->
+  <section class="sec" style="padding-top:0;">
+    <div class="sh reveal">
+      <div>
+        <p class="eyebrow">Featured Brands</p>
+        <h2 class="stitle">Brands<br/>Coming Soon</h2>
+      </div>
+      <button class="slink" style="border:none;background:none;" onclick="openPortal()">Apply to sell →</button>
+    </div>
+    <div class="brands-empty reveal">
+      <div class="brands-empty-icon">✦</div>
+      <div class="brands-empty-title">We're Curating Now</div>
+      <p class="brands-empty-sub">We're currently reviewing brand applications and building our initial lineup. Be one of the first brands on NØWN — apply below and we'll be in touch.</p>
+      <div class="brands-empty-btns">
+        <button class="btn-solid" onclick="openPortal()">Apply as a Brand</button>
+        <a href="https://discord.gg/hPexgMU9mp" target="_blank" class="btn-outline-dark">Join the Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTIFY ME — COMING SOON DROPS -->
+  <section class="sec" style="background:var(--warm);border-top:1px solid var(--border);">
+    <div class="sh reveal">
+      <div>
+        <p class="eyebrow">Stay in the Loop</p>
+        <h2 class="stitle">First Drops<br/>Coming Soon</h2>
+      </div>
+    </div>
+    <p style="font-size:14px;line-height:1.85;color:var(--grey-text);max-width:480px;margin-bottom:48px;" class="reveal">Our first brands are being approved now. Sign up below to be the first to know when they go live — and get early access before we open to the public.</p>
+    <div class="coming-grid reveal">
+      <div class="coming-card">
+        <span class="coming-card-num">01</span>
+        <div class="coming-card-label">Drop Alert</div>
+        <div class="coming-card-title">First Brand Launch</div>
+        <div class="coming-card-text">Our first approved brand will be going live soon. Follow us to find out who it is before anyone else.</div>
+        <button class="coming-card-btn" onclick="toggleNotify(this)">🔔 Notify Me</button>
+      </div>
+      <div class="coming-card">
+        <span class="coming-card-num">02</span>
+        <div class="coming-card-label">Community</div>
+        <div class="coming-card-title">Discord is Live</div>
+        <div class="coming-card-text">Our Discord community is open now. Join to connect with upcoming brands, give feedback, and get early access.</div>
+        <a href="https://discord.gg/hPexgMU9mp" target="_blank" class="coming-card-btn">Join Discord →</a>
+      </div>
+      <div class="coming-card">
+        <span class="coming-card-num">03</span>
+        <div class="coming-card-label">For Brands</div>
+        <div class="coming-card-title">Applications Open</div>
+        <div class="coming-card-text">We're accepting brand applications now. If you make independent clothing and want to reach the right audience, apply.</div>
+        <button class="coming-card-btn" onclick="openPortal()">Apply Now →</button>
+      </div>
+      <div class="coming-card">
+        <span class="coming-card-num">04</span>
+        <div class="coming-card-label">Newsletter</div>
+        <div class="coming-card-title">The NØWN Edit</div>
+        <div class="coming-card-text">New brand approvals, upcoming drops, community picks. Sent when it's worth reading — no spam, ever.</div>
+        <button class="coming-card-btn" onclick="openPortal()">Subscribe →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (for customers) -->
+  <section class="sec">
+    <div class="sh reveal">
+      <div>
+        <p class="eyebrow">For Shoppers</p>
+        <h2 class="stitle">How<br/>NØWN Works</h2>
+      </div>
+    </div>
+    <div class="how-grid reveal">
+      <div class="how-card">
+        <span class="how-n">01</span>
+        <div class="how-t">We Curate</div>
+        <div class="how-d">Every brand on NØWN is personally reviewed by our team. We only approve brands with original design, a clear identity, and real quality.</div>
+      </div>
+      <div class="how-card">
+        <span class="how-n">02</span>
+        <div class="how-t">You Discover</div>
+        <div class="how-d">Browse independent labels you won't find anywhere else. Follow brands, set drop alerts, and be part of the community from day one.</div>
+      </div>
+      <div class="how-card">
+        <span class="how-n">03</span>
+        <div class="how-t">Shop Direct</div>
+        <div class="how-d">Buy directly from the brand. Your money goes straight to the people who made your clothes — no unnecessary markups or middlemen.</div>
+      </div>
     </div>
   </section>
 
   <!-- COMMUNITY / DISCORD -->
   <section class="community-banner" id="community">
-    <div class="cb-left reveal">
+    <div class="reveal">
       <div class="cb-eyebrow">Join the Community</div>
       <div class="cb-title">Be Part of<br/>Something<br/>Real</div>
-      <div class="cb-sub">NØWN isn't just a marketplace. It's a community of people who care about independent fashion — brands and customers together, in one space.</div>
-      <a href="https://discord.gg" target="_blank" class="btn-discord" style="width:fit-content;">
-        <svg class="discord-icon" viewBox="0 0 16 12" fill="none"><path d="M13.55 1.02A13.27 13.27 0 0 0 10.3 0c-.14.25-.3.6-.41.86a12.3 12.3 0 0 0-3.78 0A8.64 8.64 0 0 0 5.7 0 13.32 13.32 0 0 0 2.44 1.02 14.06 14.06 0 0 0 0 10.27a13.4 13.4 0 0 0 4.1 2.07c.33-.45.63-.93.88-1.44a8.7 8.7 0 0 1-1.38-.66l.34-.26a9.56 9.56 0 0 0 8.12 0l.34.26c-.44.26-.9.48-1.38.66.25.51.55.99.88 1.44A13.36 13.36 0 0 0 16 10.27 14 14 0 0 0 13.55 1.02ZM5.34 8.41c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.83 0 1.51.75 1.49 1.67 0 .92-.66 1.67-1.49 1.67Zm5.32 0c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.84 0 1.51.75 1.49 1.67 0 .92-.65 1.67-1.49 1.67Z" fill="currentColor"/></svg>
+      <p class="cb-sub">NØWN isn't just a marketplace. It's a community of people who genuinely care about independent fashion — brands and customers in the same space.</p>
+      <a href="https://discord.gg/hPexgMU9mp" target="_blank" class="btn-discord" style="width:fit-content;">
+        <svg width="14" height="11" viewBox="0 0 16 12" fill="none"><path d="M13.55 1.02A13.27 13.27 0 0 0 10.3 0c-.14.25-.3.6-.41.86a12.3 12.3 0 0 0-3.78 0A8.64 8.64 0 0 0 5.7 0 13.32 13.32 0 0 0 2.44 1.02 14.06 14.06 0 0 0 0 10.27a13.4 13.4 0 0 0 4.1 2.07c.33-.45.63-.93.88-1.44a8.7 8.7 0 0 1-1.38-.66l.34-.26a9.56 9.56 0 0 0 8.12 0l.34.26c-.44.26-.9.48-1.38.66.25.51.55.99.88 1.44A13.36 13.36 0 0 0 16 10.27 14 14 0 0 0 13.55 1.02ZM5.34 8.41c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.83 0 1.51.75 1.49 1.67 0 .92-.66 1.67-1.49 1.67Zm5.32 0c-.82 0-1.49-.75-1.49-1.67s.65-1.67 1.49-1.67c.84 0 1.51.75 1.49 1.67 0 .92-.65 1.67-1.49 1.67Z" fill="currentColor"/></svg>
         Join the Discord
       </a>
     </div>
-    <div class="cb-right reveal" style="transition-delay:0.15s;">
-      <div class="cb-feature">
-        <div class="cb-icon">💬</div>
-        <div><div class="cb-feature-title">Talk Directly to Brands</div><div class="cb-feature-desc">Ask questions, give feedback, and get early access from the brands you follow.</div></div>
-      </div>
-      <div class="cb-feature">
-        <div class="cb-icon">🔔</div>
-        <div><div class="cb-feature-title">Drop Notifications</div><div class="cb-feature-desc">Be the first to know when a brand you're following is dropping something new.</div></div>
-      </div>
-      <div class="cb-feature">
-        <div class="cb-icon">✦</div>
-        <div><div class="cb-feature-title">Exclusive Member Access</div><div class="cb-feature-desc">Community members get early access to new brand launches before they go public.</div></div>
-      </div>
-      <div class="cb-feature">
-        <div class="cb-icon">👕</div>
-        <div><div class="cb-feature-title">Style Discussions</div><div class="cb-feature-desc">Share what you're wearing, discover new pieces, and connect with people who dress like you think.</div></div>
-      </div>
+    <div class="cb-features reveal" style="transition-delay:0.15s;">
+      <div class="cb-feat"><div class="cb-feat-icon">💬</div><div><div class="cb-feat-title">Talk to Brands Directly</div><div class="cb-feat-desc">Ask questions, give feedback, get early access from the brands you follow.</div></div></div>
+      <div class="cb-feat"><div class="cb-feat-icon">🔔</div><div><div class="cb-feat-title">Drop Notifications</div><div class="cb-feat-desc">Be the first to know when a brand you follow is dropping something new.</div></div></div>
+      <div class="cb-feat"><div class="cb-feat-icon">✦</div><div><div class="cb-feat-title">Early Access</div><div class="cb-feat-desc">Community members get early access to new brand launches before they go public.</div></div></div>
+      <div class="cb-feat"><div class="cb-feat-icon">👕</div><div><div class="cb-feat-title">Style Discussions</div><div class="cb-feat-desc">Share what you're wearing, discover new pieces, connect with people who dress with intention.</div></div></div>
     </div>
   </section>
 
+  <!-- APPLY STRIP -->
+  <div class="apply-strip reveal">
+    <div class="apply-strip-left">
+      <div class="apply-strip-title">Your Brand<br/>Belongs Here</div>
+      <p class="apply-strip-sub">We're looking for independent clothing brands with original design and a genuine point of view. If that's you, apply — we personally review every application.</p>
+    </div>
+    <div class="apply-strip-right">
+      <button class="btn-solid" onclick="openPortal()" style="font-size:12px;padding:16px 40px;">Apply as a Brand</button>
+    </div>
+  </div>
+
   <!-- NEWSLETTER -->
-  <div class="newsletter-sec">
+  <div class="nl-sec">
     <div class="nl-inner reveal">
       <div class="nl-title">Stay in the Loop</div>
-      <p class="nl-sub">The NØWN edit — new brand approvals, upcoming drops, community picks, and brand stories. Sent when it's worth reading.</p>
+      <p class="nl-sub">New brand approvals, upcoming drops, community picks. Sent when it's worth reading.</p>
       <div class="nl-form">
         <input class="nl-input" type="email" placeholder="Your email address" id="nlEmail" />
-        <button class="nl-btn" onclick="subscribeNewsletter()">Subscribe</button>
+        <button class="nl-btn" onclick="subscribeNl()">Subscribe</button>
       </div>
-      <p id="nl-confirm" style="margin-top:14px;font-size:12px;color:var(--grey-text);display:none;">You're in. Welcome to the community.</p>
+      <p class="nl-confirm" id="nlConfirm">You're in. Welcome to the community.</p>
     </div>
   </div>
 
@@ -765,7 +515,7 @@
   <footer>
     <div class="ft">
       <div>
-        <svg height="18" style="display:block;opacity:0.35;" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg height="18" style="display:block;opacity:0.3;" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#0a0a0a"/>
           <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#fafafa" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/></g>
           <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#0a0a0a"/>
@@ -776,33 +526,35 @@
       <div>
         <div class="fct">Shop</div>
         <ul class="flinks">
-          <li><a href="#">New Arrivals</a></li><li><a href="#">All Brands</a></li>
-          <li><a href="#">Outerwear</a></li><li><a href="#">Accessories</a></li>
+          <li><a href="#shop">Browse Categories</a></li>
+          <li><a href="#shop">New Arrivals</a></li>
+          <li><a href="#shop">All Brands</a></li>
         </ul>
       </div>
       <div>
         <div class="fct">Community</div>
         <ul class="flinks">
-          <li><a href="https://discord.gg" target="_blank">Discord</a></li>
-          <li><a href="#discover">Discover Feed</a></li>
-          <li><a href="#">Back a Brand</a></li>
-          <li><a href="#">Drop Alerts</a></li>
+          <li><a href="https://discord.gg/hPexgMU9mp" target="_blank">Discord</a></li>
+          <li><a href="#community">About the Community</a></li>
+          <li><a href="#" onclick="openPortal();return false;">List Your Brand</a></li>
         </ul>
       </div>
       <div>
         <div class="fct">Company</div>
         <ul class="flinks">
-          <li><a href="#">About</a></li>
-          <li><a href="#" onclick="openPortal();return false;">List Your Brand</a></li>
-          <li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li>
+          <li><a href="#about">About NØWN</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
         </ul>
       </div>
     </div>
     <div class="fb">
       <p class="fcp">© 2026 NØWN. All rights reserved.</p>
       <div class="fso">
-        <a href="#">Instagram</a><a href="#">TikTok</a>
-        <a href="https://discord.gg" target="_blank" style="color:var(--discord) !important;">Discord</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="https://discord.gg/hPexgMU9mp" target="_blank" class="discord-link">Discord</a>
       </div>
     </div>
   </footer>
@@ -812,10 +564,10 @@
     <nav class="portal-nav">
       <div class="portal-nav-center">
         <svg height="18" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#f4f4f4"/>
-          <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#f4f4f4" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#0a0a0a" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#f4f4f4" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#f4f4f4" stroke-width="17" fill="none"/></g>
-          <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#f4f4f4"/>
-          <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#f4f4f4"/>
+          <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#f0ede8"/>
+          <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#f0ede8" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#0a0a0a" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#f0ede8" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#f0ede8" stroke-width="17" fill="none"/></g>
+          <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#f0ede8"/>
+          <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#f0ede8"/>
         </svg>
         <span class="portal-label">For Brands</span>
       </div>
@@ -825,28 +577,28 @@
       <div>
         <p class="portal-eyebrow">The Curated Platform</p>
         <h2 class="portal-title">From Unknown<br/>to NØWN</h2>
-        <p class="portal-sub">We personally curate every brand on NØWN. No algorithms, no pay-to-play. If your work is good, we want to hear from you.</p>
+        <p class="portal-sub">We personally curate every brand on NØWN. No algorithms, no pay-to-play. If your work is good and your vision is clear, we want to hear from you.</p>
       </div>
-      <div class="portal-stats">
-        <div class="pstat"><div class="pstat-n">120+</div><div class="pstat-l">Active Brands</div></div>
-        <div class="pstat"><div class="pstat-n">38K</div><div class="pstat-l">Customers</div></div>
-        <div class="pstat"><div class="pstat-n">4K+</div><div class="pstat-l">Products</div></div>
-        <div class="pstat"><div class="pstat-n">100%</div><div class="pstat-l">Independent</div></div>
+      <div class="portal-values">
+        <div class="pval"><div class="pval-icon">✦</div><div><div class="pval-title">Independent Ownership</div><div class="pval-desc">You own and operate your brand. No wholesale accounts or resellers.</div></div></div>
+        <div class="pval"><div class="pval-icon">◈</div><div><div class="pval-title">Original Design</div><div class="pval-desc">Everything you sell must be your own design or made to your direction.</div></div></div>
+        <div class="pval"><div class="pval-icon">◉</div><div><div class="pval-title">Clear Identity</div><div class="pval-desc">Your brand has a recognisable aesthetic and a genuine point of view.</div></div></div>
+        <div class="pval"><div class="pval-icon">□</div><div><div class="pval-title">Ready to Sell</div><div class="pval-desc">You have stock available and can fulfil orders reliably.</div></div></div>
       </div>
     </div>
     <div class="portal-section">
       <h3 class="portal-section-title">How It Works</h3>
       <div class="portal-how-grid">
-        <div class="portal-how-card"><span class="phow-n">01</span><div class="phow-t">You Apply</div><div class="phow-d">Tell us about your brand — who you are, what you make, and why it belongs on NØWN. We read every application personally.</div></div>
-        <div class="portal-how-card"><span class="phow-n">02</span><div class="phow-t">We Decide</div><div class="phow-d">Our team reviews against our curation standards. We look for originality, quality, and a genuine point of view. No exceptions.</div></div>
-        <div class="portal-how-card"><span class="phow-n">03</span><div class="phow-t">You Sell</div><div class="phow-d">Approved brands get a full storefront, access to our community, and a place in the Discover feed to tell your story.</div></div>
+        <div class="phow"><span class="phow-n">01</span><div class="phow-t">You Apply</div><div class="phow-d">Tell us about your brand — who you are, what you make, and why it belongs on NØWN. We read every application personally.</div></div>
+        <div class="phow"><span class="phow-n">02</span><div class="phow-t">We Decide</div><div class="phow-d">Our team reviews your application against our curation standards. We look for originality, quality, and a genuine point of view.</div></div>
+        <div class="phow"><span class="phow-n">03</span><div class="phow-t">You Sell</div><div class="phow-d">Approved brands get a full storefront, access to our community, and a place in the Discover feed to tell their story.</div></div>
       </div>
     </div>
     <div class="portal-section">
       <h3 class="portal-section-title">Apply to Sell</h3>
       <div class="portal-apply-grid">
         <div>
-          <p class="apply-pitch">NØWN is curated. We personally review every brand that applies and only approve those that meet our standards. If you're building something real, we want to hear from you.</p>
+          <p class="apply-intro">We're currently accepting applications for our founding brands — the first labels to launch on NØWN. These brands will shape what the platform becomes. Apply below and we'll be in touch within 5–7 business days.</p>
           <div class="pcriteria">
             <div class="pcrit"><div class="pcrit-icon">✦</div><div class="pcrit-t"><strong>Independent Ownership</strong><span>You own and operate your brand. No wholesale accounts or resellers.</span></div></div>
             <div class="pcrit"><div class="pcrit-icon">◈</div><div class="pcrit-t"><strong>Original Design</strong><span>Everything you sell must be your own design or made to your direction.</span></div></div>
@@ -856,7 +608,7 @@
         </div>
         <div>
           <div id="formWrap">
-            <form class="app-form" onsubmit="submitForm(event)">
+            <form onsubmit="submitForm(event)">
               <div class="frow">
                 <div class="fg"><label>Brand Name *</label><input type="text" placeholder="Your brand" required></div>
                 <div class="fg"><label>Your Name *</label><input type="text" placeholder="Full name" required></div>
@@ -895,95 +647,34 @@
   <script>
     // Cursor
     const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX+'px'; cursor.style.top = e.clientY+'px'; });
-    document.querySelectorAll('a,button,.bc,.cat-row,.df-card,.sp-card,.back-card,.drop-card,input,select,textarea').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+    document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
+    document.querySelectorAll('a,button,.hi,.cat-row,.how-card,.coming-card,.about-cell,input,select,textarea').forEach(el => {
+      el.addEventListener('mouseenter',()=>cursor.classList.add('expand'));
+      el.addEventListener('mouseleave',()=>cursor.classList.remove('expand'));
     });
 
     // Scroll reveal
-    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    },{ threshold:0.08 });
+    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
     // Portal
-    function openPortal() { document.getElementById('brandPortal').classList.add('open'); document.body.classList.add('portal-open'); document.getElementById('brandPortal').scrollTop = 0; }
-    function closePortal() { document.getElementById('brandPortal').classList.remove('open'); document.body.classList.remove('portal-open'); }
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') closePortal(); });
+    function openPortal(){ document.getElementById('brandPortal').classList.add('open'); document.body.classList.add('portal-open'); document.getElementById('brandPortal').scrollTop=0; }
+    function closePortal(){ document.getElementById('brandPortal').classList.remove('open'); document.body.classList.remove('portal-open'); }
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePortal(); });
 
     // Form
-    function submitForm(e) { e.preventDefault(); document.getElementById('formWrap').style.display='none'; document.getElementById('formSuccess').classList.add('show'); }
+    function submitForm(e){ e.preventDefault(); document.getElementById('formWrap').style.display='none'; document.getElementById('formSuccess').classList.add('show'); }
 
-    // Follow brands
-    function toggleFollow(btn) {
-      const following = btn.classList.toggle('following');
-      btn.textContent = following ? '✓ Following' : '+ Follow';
-      btn.style.background = following ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)';
-      btn.style.color = following ? '#fff' : 'var(--black)';
-    }
-
-    // Spotlight follow
-    function toggleSpFollow(btn) {
-      const following = btn.classList.toggle('following');
-      btn.textContent = following ? '✓ Following' : '+ Follow Brand';
-    }
-
-    // Like / Save on discover
-    function toggleLike(btn) {
-      const liked = btn.classList.toggle('liked');
-      const count = parseInt(btn.textContent.replace(/\D/g,''));
-      btn.textContent = (liked ? '♥ ' : '♡ ') + (liked ? count+1 : count-1);
-    }
-    function toggleSave(btn) {
-      const saved = btn.classList.toggle('saved');
-      btn.textContent = saved ? '✓ Saved' : '⊹ Save';
-    }
-
-    // Back a brand
-    function toggleBack(btn) {
-      const backed = btn.classList.toggle('backed');
-      btn.textContent = backed ? '✓ Backed' : 'Back This Brand';
-      if(backed) {
-        const fill = btn.closest('.back-card').querySelector('.back-bar-fill');
-        const countEl = btn.closest('.back-card').querySelector('.back-count strong');
-        fill.style.width = (parseFloat(fill.style.width) + 2) + '%';
-        countEl.textContent = (parseInt(countEl.textContent) + 1).toString();
-      }
-    }
-
-    // Drop alerts
-    function toggleAlert(btn) {
-      const alerted = btn.classList.toggle('alerted');
-      btn.innerHTML = alerted ? '<span class="drop-bell">🔔</span> Alerted' : '<span class="drop-bell">🔔</span> Alert Me';
-    }
-
-    // Spotlight scroll
-    function scrollSpotlight(dir) {
-      const el = document.getElementById('spotlightScroll');
-      el.scrollBy({ left: dir * 360, behavior: 'smooth' });
-    }
+    // Notify
+    function toggleNotify(btn){ btn.classList.toggle('notified'); btn.textContent = btn.classList.contains('notified') ? '✓ You\'re on the list' : '🔔 Notify Me'; }
 
     // Newsletter
-    function subscribeNewsletter() {
-      const email = document.getElementById('nlEmail').value;
-      if(email && email.includes('@')) {
-        document.getElementById('nlEmail').value = '';
-        document.getElementById('nl-confirm').style.display = 'block';
-      }
+    function subscribeNl(){
+      const v = document.getElementById('nlEmail').value;
+      if(v && v.includes('@')){ document.getElementById('nlEmail').value=''; document.getElementById('nlConfirm').style.display='block'; }
     }
-
-    // Animate back bars on scroll
-    const backObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if(e.isIntersecting) {
-          e.target.querySelectorAll('.back-bar-fill').forEach(bar => {
-            const w = bar.style.width; bar.style.width = '0%';
-            setTimeout(() => bar.style.width = w, 100);
-          });
-          backObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.back-grid').forEach(g => backObs.observe(g));
   </script>
 </body>
 </html>
