@@ -18,11 +18,9 @@
       --discord: #5865F2;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+    body { background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-    /* CURSOR */
-    .cursor { position: fixed; width: 8px; height: 8px; background: var(--black); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width 0.22s, height 0.22s; mix-blend-mode: difference; }
-    .cursor.expand { width: 32px; height: 32px; }
+
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 26px 52px; background: rgba(250,250,250,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -268,7 +266,6 @@
   </style>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
 
   <!-- NAV -->
   <nav>
@@ -645,12 +642,8 @@
   </div>
 
   <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
-    document.querySelectorAll('a,button,.hi,.cat-row,.how-card,.coming-card,.about-cell,input,select,textarea').forEach(el => {
-      el.addEventListener('mouseenter',()=>cursor.classList.add('expand'));
-      el.addEventListener('mouseleave',()=>cursor.classList.remove('expand'));
+    });
+
     });
 
     // Scroll reveal
