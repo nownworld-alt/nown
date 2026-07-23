@@ -18,11 +18,7 @@
       --discord: #5865F2;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
-
-    /* CURSOR */
-    .cursor { position: fixed; width: 8px; height: 8px; background: var(--black); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width 0.22s, height 0.22s; mix-blend-mode: difference; }
-    .cursor.expand { width: 32px; height: 32px; }
+    body { background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 26px 52px; background: rgba(250,250,250,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -51,27 +47,10 @@
     .btn-discord:hover { background: #4752c4; transform: translateY(-1px); }
     .hero-stats { display: flex; gap: 0; border-top: 1px solid var(--border); padding-top: 32px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
     .hero-stat { padding-right: 40px; }
-    .hero-stat + .hero-stat { border-left: 1px solid var(--border); padding-left: 40px; padding-right: 40px; }
+    .hero-stat + .hero-stat { border-left: 1px solid var(--border); padding-left: 40px; }
     .hero-stat:last-child { padding-right: 0; }
     .hero-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; line-height: 1; margin-bottom: 4px; }
     .hero-stat-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-text); }
-    .hero-bottom { border-top: 1px solid var(--border); padding-top: 28px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
-    .hero-bottom-text { font-size: 12px; color: var(--grey-text); line-height: 1.7; max-width: 320px; }
-    .hero-bottom-text strong { color: var(--black); font-weight: 500; }
-
-    /* HERO RIGHT */
-    .hero-right { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; }
-    .hi { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .hi-main { grid-column: 1; grid-row: 1/3; }
-    .hi-inner { position: absolute; inset: 0; transition: transform 0.8s ease; }
-    .hi:hover .hi-inner { transform: scale(1.04); }
-    .hi1 { background: linear-gradient(155deg, #d5cfc8, #bfb8b0); }
-    .hi2 { background: linear-gradient(155deg, #ddd8d1, #ccc6be); }
-    .hi3 { background: linear-gradient(155deg, #e0dbd4, #d0c9c1); }
-    .hi-label { position: absolute; bottom: 14px; left: 14px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(0,0,0,0.35); z-index: 2; }
-    .hi-tag { position: absolute; top: 14px; right: 14px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; background: rgba(255,255,255,0.8); color: rgba(0,0,0,0.5); padding: 4px 9px; z-index: 2; border: 1px solid rgba(0,0,0,0.1); }
-    .hi-lines { width: 52%; display: flex; flex-direction: column; gap: 9px; }
-    .hi-line { height: 2px; background: rgba(0,0,0,0.08); border-radius: 1px; }
 
     /* MARQUEE */
     .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 13px 0; background: var(--white); }
@@ -93,25 +72,25 @@
     .sh { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
     .eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 14px; }
     .stitle { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px,5.5vw,76px); line-height: 0.92; letter-spacing: 0.02em; }
-    .slink { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-text); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+    .slink { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-text); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 8px; background: none; border: none; }
     .slink::after { content: '→'; }
     .slink:hover { color: var(--black); }
 
-    /* BRANDS — EMPTY STATE */
+    /* BRANDS EMPTY STATE */
     .brands-empty { background: var(--warm); padding: 80px 52px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
     .brands-empty-icon { width: 56px; height: 56px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 4px; }
     .brands-empty-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; }
     .brands-empty-sub { font-size: 14px; color: var(--grey-text); line-height: 1.8; max-width: 380px; }
-    .brands-empty-btns { display: flex; gap: 10px; margin-top: 8px; }
+    .brands-empty-btns { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
 
     /* COMING SOON GRID */
     .coming-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
-    .coming-card { background: var(--warm); padding: 36px 28px; display: flex; flex-direction: column; gap: 0; position: relative; overflow: hidden; }
+    .coming-card { background: var(--warm); padding: 36px 28px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
     .coming-card-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: rgba(0,0,0,0.04); position: absolute; top: 8px; right: 14px; line-height: 1; }
     .coming-card-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 20px; }
     .coming-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; margin-bottom: 10px; }
     .coming-card-text { font-size: 13px; line-height: 1.75; color: #666; margin-bottom: 24px; flex: 1; }
-    .coming-card-btn { background: none; border: 1px solid var(--border); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 18px; transition: all 0.2s; width: fit-content; }
+    .coming-card-btn { background: none; border: 1px solid var(--border); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 18px; transition: all 0.2s; width: fit-content; text-decoration: none; display: inline-block; }
     .coming-card-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
     .coming-card-btn.notified { background: var(--black); color: var(--white); border-color: var(--black); }
 
@@ -148,10 +127,8 @@
 
     /* APPLY STRIP */
     .apply-strip { background: var(--warm); padding: 80px 52px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); gap: 60px; }
-    .apply-strip-left { flex: 1; }
     .apply-strip-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px,5vw,64px); line-height: 0.92; margin-bottom: 16px; }
     .apply-strip-sub { font-size: 14px; line-height: 1.8; color: var(--grey-text); max-width: 420px; }
-    .apply-strip-right { flex-shrink: 0; }
 
     /* NEWSLETTER */
     .nl-sec { padding: 80px 52px; border-top: 1px solid var(--border); }
@@ -179,7 +156,7 @@
     .fso { display: flex; gap: 20px; }
     .fso a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.28); text-decoration: none; transition: color 0.2s; }
     .fso a:hover { color: var(--black); }
-    .fso a.discord-link { color: var(--discord) !important; opacity: 0.7; }
+    .fso a.discord-link { color: var(--discord) !important; opacity: 0.8; }
     .fso a.discord-link:hover { opacity: 1; }
 
     /* BRAND PORTAL */
@@ -189,7 +166,7 @@
     .portal-nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 52px; background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.07); }
     .portal-nav-center { display: flex; flex-direction: column; align-items: center; gap: 5px; }
     .portal-label { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-    .portal-close { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s; }
+    .portal-close { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: border-color 0.2s; }
     .portal-close:hover { border-color: rgba(255,255,255,0.45); color: var(--white); }
     .portal-hero { padding: 80px 52px 72px; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .portal-eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
@@ -228,8 +205,8 @@
     .ffull { grid-column: 1/-1; }
     .fsub { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.04); padding: 20px 16px; margin-top: 2px; }
     .fnote { font-size: 12px; color: rgba(255,255,255,0.28); max-width: 200px; line-height: 1.6; }
-    .bsub { background: var(--white); color: var(--black); border: none; padding: 13px 30px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
-    .bsub:hover { background: #eee; transform: translateY(-1px); }
+    .bsub { background: var(--white); color: var(--black); border: none; padding: 13px 30px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s; }
+    .bsub:hover { background: #eee; }
     .form-success { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 72px 40px; background: rgba(255,255,255,0.03); }
     .form-success.show { display: flex; }
     .suc-icon { width: 48px; height: 48px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 20px; color: var(--white); }
@@ -268,7 +245,6 @@
   </style>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
 
   <!-- NAV -->
   <nav>
@@ -311,36 +287,17 @@
       <a href="#about" class="btn-outline-dark">How It Works</a>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-n">Curated</div>
-        <div class="hero-stat-l">Every Brand</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-n">Direct</div>
-        <div class="hero-stat-l">Shop to Brand</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-n">100%</div>
-        <div class="hero-stat-l">Independent</div>
-      </div>
+      <div class="hero-stat"><div class="hero-stat-n">Curated</div><div class="hero-stat-l">Every Brand</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">Direct</div><div class="hero-stat-l">Shop to Brand</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">100%</div><div class="hero-stat-l">Independent</div></div>
     </div>
   </section>
 
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
-      <span class="mi">Curated Brands</span><span class="mi ms">—</span>
-      <span class="mi">Shop Direct</span><span class="mi ms">—</span>
-      <span class="mi">Wear Different</span><span class="mi ms">—</span>
-      <span class="mi">Independent Labels</span><span class="mi ms">—</span>
-      <span class="mi">Community First</span><span class="mi ms">—</span>
-      <span class="mi">Launching 2026</span><span class="mi ms">—</span>
-      <span class="mi">Curated Brands</span><span class="mi ms">—</span>
-      <span class="mi">Shop Direct</span><span class="mi ms">—</span>
-      <span class="mi">Wear Different</span><span class="mi ms">—</span>
-      <span class="mi">Independent Labels</span><span class="mi ms">—</span>
-      <span class="mi">Community First</span><span class="mi ms">—</span>
-      <span class="mi">Launching 2026</span><span class="mi ms">—</span>
+      <span class="mi">Curated Brands</span><span class="mi ms">—</span><span class="mi">Shop Direct</span><span class="mi ms">—</span><span class="mi">Wear Different</span><span class="mi ms">—</span><span class="mi">Independent Labels</span><span class="mi ms">—</span><span class="mi">Community First</span><span class="mi ms">—</span><span class="mi">Launching 2026</span><span class="mi ms">—</span>
+      <span class="mi">Curated Brands</span><span class="mi ms">—</span><span class="mi">Shop Direct</span><span class="mi ms">—</span><span class="mi">Wear Different</span><span class="mi ms">—</span><span class="mi">Independent Labels</span><span class="mi ms">—</span><span class="mi">Community First</span><span class="mi ms">—</span><span class="mi">Launching 2026</span><span class="mi ms">—</span>
     </div>
   </div>
 
@@ -366,10 +323,7 @@
   <!-- SHOP BY CATEGORY -->
   <section class="sec" id="shop">
     <div class="sh reveal">
-      <div>
-        <p class="eyebrow">Browse</p>
-        <h2 class="stitle">Shop by<br/>Category</h2>
-      </div>
+      <div><p class="eyebrow">Browse</p><h2 class="stitle">Shop by<br/>Category</h2></div>
     </div>
     <div class="cat-list reveal">
       <div class="cat-row"><span class="cat-rn">Outerwear</span><div class="cat-r"><span class="cat-cnt">Coming soon</span><span class="cat-ar">→</span></div></div>
@@ -380,14 +334,11 @@
     </div>
   </section>
 
-  <!-- BRANDS EMPTY STATE -->
+  <!-- BRANDS -->
   <section class="sec" style="padding-top:0;">
     <div class="sh reveal">
-      <div>
-        <p class="eyebrow">Featured Brands</p>
-        <h2 class="stitle">Brands<br/>Coming Soon</h2>
-      </div>
-      <button class="slink" style="border:none;background:none;" onclick="openPortal()">Apply to sell →</button>
+      <div><p class="eyebrow">Featured Brands</p><h2 class="stitle">Brands<br/>Coming Soon</h2></div>
+      <button class="slink" onclick="openPortal()">Apply to sell</button>
     </div>
     <div class="brands-empty reveal">
       <div class="brands-empty-icon">✦</div>
@@ -400,15 +351,12 @@
     </div>
   </section>
 
-  <!-- NOTIFY ME — COMING SOON DROPS -->
+  <!-- COMING SOON -->
   <section class="sec" style="background:var(--warm);border-top:1px solid var(--border);">
     <div class="sh reveal">
-      <div>
-        <p class="eyebrow">Stay in the Loop</p>
-        <h2 class="stitle">First Drops<br/>Coming Soon</h2>
-      </div>
+      <div><p class="eyebrow">Stay in the Loop</p><h2 class="stitle">First Drops<br/>Coming Soon</h2></div>
     </div>
-    <p style="font-size:14px;line-height:1.85;color:var(--grey-text);max-width:480px;margin-bottom:48px;" class="reveal">Our first brands are being approved now. Sign up below to be the first to know when they go live — and get early access before we open to the public.</p>
+    <p style="font-size:14px;line-height:1.85;color:var(--grey-text);max-width:480px;margin-bottom:48px;" class="reveal">Our first brands are being approved now. Sign up to be the first to know when they go live — and get early access before we open to the public.</p>
     <div class="coming-grid reveal">
       <div class="coming-card">
         <span class="coming-card-num">01</span>
@@ -436,39 +384,24 @@
         <div class="coming-card-label">Newsletter</div>
         <div class="coming-card-title">The NØWN Edit</div>
         <div class="coming-card-text">New brand approvals, upcoming drops, community picks. Sent when it's worth reading — no spam, ever.</div>
-        <button class="coming-card-btn" onclick="openPortal()">Subscribe →</button>
+        <button class="coming-card-btn" onclick="document.getElementById('nlEmail').focus()">Subscribe →</button>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS (for customers) -->
+  <!-- HOW IT WORKS -->
   <section class="sec">
     <div class="sh reveal">
-      <div>
-        <p class="eyebrow">For Shoppers</p>
-        <h2 class="stitle">How<br/>NØWN Works</h2>
-      </div>
+      <div><p class="eyebrow">For Shoppers</p><h2 class="stitle">How<br/>NØWN Works</h2></div>
     </div>
     <div class="how-grid reveal">
-      <div class="how-card">
-        <span class="how-n">01</span>
-        <div class="how-t">We Curate</div>
-        <div class="how-d">Every brand on NØWN is personally reviewed by our team. We only approve brands with original design, a clear identity, and real quality.</div>
-      </div>
-      <div class="how-card">
-        <span class="how-n">02</span>
-        <div class="how-t">You Discover</div>
-        <div class="how-d">Browse independent labels you won't find anywhere else. Follow brands, set drop alerts, and be part of the community from day one.</div>
-      </div>
-      <div class="how-card">
-        <span class="how-n">03</span>
-        <div class="how-t">Shop Direct</div>
-        <div class="how-d">Buy directly from the brand. Your money goes straight to the people who made your clothes — no unnecessary markups or middlemen.</div>
-      </div>
+      <div class="how-card"><span class="how-n">01</span><div class="how-t">We Curate</div><div class="how-d">Every brand on NØWN is personally reviewed by our team. We only approve brands with original design, a clear identity, and real quality.</div></div>
+      <div class="how-card"><span class="how-n">02</span><div class="how-t">You Discover</div><div class="how-d">Browse independent labels you won't find anywhere else. Follow brands, set drop alerts, and be part of the community from day one.</div></div>
+      <div class="how-card"><span class="how-n">03</span><div class="how-t">Shop Direct</div><div class="how-d">Buy directly from the brand. Your money goes straight to the people who made your clothes — no unnecessary markups or middlemen.</div></div>
     </div>
   </section>
 
-  <!-- COMMUNITY / DISCORD -->
+  <!-- COMMUNITY -->
   <section class="community-banner" id="community">
     <div class="reveal">
       <div class="cb-eyebrow">Join the Community</div>
@@ -489,13 +422,11 @@
 
   <!-- APPLY STRIP -->
   <div class="apply-strip reveal">
-    <div class="apply-strip-left">
+    <div>
       <div class="apply-strip-title">Your Brand<br/>Belongs Here</div>
       <p class="apply-strip-sub">We're looking for independent clothing brands with original design and a genuine point of view. If that's you, apply — we personally review every application.</p>
     </div>
-    <div class="apply-strip-right">
-      <button class="btn-solid" onclick="openPortal()" style="font-size:12px;padding:16px 40px;">Apply as a Brand</button>
-    </div>
+    <button class="btn-solid" onclick="openPortal()" style="font-size:12px;padding:16px 40px;flex-shrink:0;">Apply as a Brand</button>
   </div>
 
   <!-- NEWSLETTER -->
@@ -645,35 +576,27 @@
   </div>
 
   <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => { cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
-    document.querySelectorAll('a,button,.hi,.cat-row,.how-card,.coming-card,.about-cell,input,select,textarea').forEach(el => {
-      el.addEventListener('mouseenter',()=>cursor.classList.add('expand'));
-      el.addEventListener('mouseleave',()=>cursor.classList.remove('expand'));
-    });
-
     // Scroll reveal
-    const obs = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-    },{ threshold:0.08 });
-    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
 
     // Portal
-    function openPortal(){ document.getElementById('brandPortal').classList.add('open'); document.body.classList.add('portal-open'); document.getElementById('brandPortal').scrollTop=0; }
-    function closePortal(){ document.getElementById('brandPortal').classList.remove('open'); document.body.classList.remove('portal-open'); }
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePortal(); });
+    function openPortal() { document.getElementById('brandPortal').classList.add('open'); document.body.classList.add('portal-open'); document.getElementById('brandPortal').scrollTop = 0; }
+    function closePortal() { document.getElementById('brandPortal').classList.remove('open'); document.body.classList.remove('portal-open'); }
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') closePortal(); });
 
     // Form
-    function submitForm(e){ e.preventDefault(); document.getElementById('formWrap').style.display='none'; document.getElementById('formSuccess').classList.add('show'); }
+    function submitForm(e) { e.preventDefault(); document.getElementById('formWrap').style.display='none'; document.getElementById('formSuccess').classList.add('show'); }
 
     // Notify
-    function toggleNotify(btn){ btn.classList.toggle('notified'); btn.textContent = btn.classList.contains('notified') ? '✓ You\'re on the list' : '🔔 Notify Me'; }
+    function toggleNotify(btn) { btn.classList.toggle('notified'); btn.textContent = btn.classList.contains('notified') ? '✓ You\'re on the list' : '🔔 Notify Me'; }
 
     // Newsletter
-    function subscribeNl(){
+    function subscribeNl() {
       const v = document.getElementById('nlEmail').value;
-      if(v && v.includes('@')){ document.getElementById('nlEmail').value=''; document.getElementById('nlConfirm').style.display='block'; }
+      if(v && v.includes('@')) { document.getElementById('nlEmail').value = ''; document.getElementById('nlConfirm').style.display = 'block'; }
     }
   </script>
 </body>
