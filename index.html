@@ -33,24 +33,38 @@
     .nav-btn-solid:hover { background: #222; }
 
     /* HERO */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 140px 52px 100px; position: relative; overflow: hidden; }
-    .hero::after { content: 'NØWN'; position: absolute; right: -20px; bottom: -80px; font-family: 'Bebas Neue', sans-serif; font-size: clamp(180px,28vw,420px); color: rgba(0,0,0,0.04); letter-spacing: -0.02em; pointer-events: none; line-height: 1; user-select: none; }
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 73px; overflow: hidden; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 52px; position: relative; z-index: 2; }
     .hero-eyebrow { font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.9s 0.1s forwards; }
     .hero-logo-block { opacity: 0; animation: fadeUp 0.9s 0.25s forwards; margin-bottom: 24px; }
     .hero-tagline { font-size: clamp(13px,1.3vw,17px); color: var(--grey-text); line-height: 1.85; margin-bottom: 48px; max-width: 400px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
     .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 64px; opacity: 0; animation: fadeUp 0.9s 0.55s forwards; }
-    .btn-solid { background: var(--black); color: var(--white); padding: 15px 36px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border: none; transition: background 0.2s, transform 0.2s; }
-    .btn-solid:hover { background: #222; transform: translateY(-1px); }
-    .btn-outline-dark { border: 1px solid rgba(0,0,0,0.2); color: var(--black); padding: 14px 36px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; background: none; transition: border-color 0.2s, transform 0.2s; }
-    .btn-outline-dark:hover { border-color: var(--black); transform: translateY(-1px); }
-    .btn-discord { background: var(--discord); color: #fff; padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; border: none; transition: background 0.2s, transform 0.2s; }
-    .btn-discord:hover { background: #4752c4; transform: translateY(-1px); }
     .hero-stats { display: flex; gap: 0; border-top: 1px solid var(--border); padding-top: 32px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
     .hero-stat { padding-right: 40px; }
     .hero-stat + .hero-stat { border-left: 1px solid var(--border); padding-left: 40px; }
     .hero-stat:last-child { padding-right: 0; }
     .hero-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; line-height: 1; margin-bottom: 4px; }
     .hero-stat-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey-text); }
+    /* RIGHT PANEL */
+    .hero-right { background: var(--warm); display: flex; flex-direction: column; justify-content: flex-end; padding: 64px 52px; position: relative; overflow: hidden; opacity: 0; animation: fadeUp 0.9s 0.3s forwards; }
+    .hero-right-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .hero-right-bg svg { width: 140%; opacity: 0.06; }
+    .hero-right-content { position: relative; z-index: 2; }
+    .hero-right-tag { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 20px; }
+    .hero-right-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px,5vw,68px); line-height: 0.92; letter-spacing: 0.02em; color: var(--black); margin-bottom: 20px; }
+    .hero-right-body { font-size: 13px; line-height: 1.85; color: #666; max-width: 340px; margin-bottom: 32px; }
+    .hero-right-items { display: flex; flex-direction: column; gap: 2px; }
+    .hero-right-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: rgba(0,0,0,0.03); border: 1px solid var(--border); }
+    .hero-right-item-icon { font-size: 14px; flex-shrink: 0; }
+    .hero-right-item-text { font-size: 12px; color: #666; line-height: 1.5; }
+    .hero-right-item-text strong { display: block; color: var(--black); font-weight: 500; font-size: 13px; margin-bottom: 1px; }
+
+    .btn-solid { background: var(--black); color: var(--white); padding: 15px 36px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border: none; transition: background 0.2s, transform 0.2s; }
+    .btn-solid:hover { background: #222; transform: translateY(-1px); }
+    .btn-outline-dark { border: 1px solid rgba(0,0,0,0.2); color: var(--black); padding: 14px 36px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; background: none; transition: border-color 0.2s, transform 0.2s; }
+    .btn-outline-dark:hover { border-color: var(--black); transform: translateY(-1px); }
+    .btn-discord { background: var(--discord); color: #fff; padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; border: none; transition: background 0.2s, transform 0.2s; }
+    .btn-discord:hover { background: #4752c4; transform: translateY(-1px); }
 
     /* MARQUEE */
     .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 13px 0; background: var(--white); }
@@ -223,7 +237,9 @@
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
-      .hero { padding: 120px 24px 80px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 48px 24px 48px; }
+      .hero-right { min-height: 60vw; padding: 40px 24px; }
       .hero-stats { flex-wrap: wrap; gap: 20px; }
       .hero-stat + .hero-stat { border-left: none; padding-left: 0; }
       .sec { padding: 72px 24px; }
@@ -272,24 +288,46 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="hero-eyebrow">The Curated Clothing Marketplace</p>
-    <div class="hero-logo-block">
-      <svg style="height:clamp(56px,9.5vw,130px);display:block;" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#0a0a0a"/>
-        <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#fafafa" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/></g>
-        <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#0a0a0a"/>
-        <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#0a0a0a"/>
-      </svg>
+    <div class="hero-left">
+      <p class="hero-eyebrow">The Curated Clothing Marketplace</p>
+      <div class="hero-logo-block">
+        <svg style="height:clamp(56px,9.5vw,130px);display:block;" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#0a0a0a"/>
+          <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#fafafa" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/></g>
+          <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#0a0a0a"/>
+          <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#0a0a0a"/>
+        </svg>
+      </div>
+      <p class="hero-tagline">Independent brands, hand-picked by us.<br/>Shop direct. Wear different.</p>
+      <div class="hero-btns">
+        <a href="#shop" class="btn-solid">Shop Now</a>
+        <a href="#about" class="btn-outline-dark">How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-n">Curated</div><div class="hero-stat-l">Every Brand</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">Direct</div><div class="hero-stat-l">Shop to Brand</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">100%</div><div class="hero-stat-l">Independent</div></div>
+      </div>
     </div>
-    <p class="hero-tagline">Independent brands, hand-picked by us.<br/>Shop direct. Wear different.</p>
-    <div class="hero-btns">
-      <a href="#shop" class="btn-solid">Shop Now</a>
-      <a href="#about" class="btn-outline-dark">How It Works</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-n">Curated</div><div class="hero-stat-l">Every Brand</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">Direct</div><div class="hero-stat-l">Shop to Brand</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">100%</div><div class="hero-stat-l">Independent</div></div>
+    <div class="hero-right">
+      <div class="hero-right-bg">
+        <svg viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#0a0a0a"/>
+          <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#f0eee9" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/></g>
+          <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#0a0a0a"/>
+          <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#0a0a0a"/>
+        </svg>
+      </div>
+      <div class="hero-right-content">
+        <div class="hero-right-tag">Why NØWN</div>
+        <div class="hero-right-heading">Built for<br/>Independent<br/>Brands</div>
+        <div class="hero-right-body">We don't let just anyone in. Every brand is hand-picked, every product is original, and every purchase goes directly to the maker.</div>
+        <div class="hero-right-items">
+          <div class="hero-right-item"><div class="hero-right-item-icon">✦</div><div class="hero-right-item-text"><strong>Curated Only</strong>Every brand personally reviewed and approved by us.</div></div>
+          <div class="hero-right-item"><div class="hero-right-item-icon">◈</div><div class="hero-right-item-text"><strong>Shop Direct</strong>Your money goes straight to the brand, no middlemen.</div></div>
+          <div class="hero-right-item"><div class="hero-right-item-icon">◉</div><div class="hero-right-item-text"><strong>Community First</strong>Brands and customers connected in the same space.</div></div>
+        </div>
+      </div>
     </div>
   </section>
 
