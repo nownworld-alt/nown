@@ -174,39 +174,39 @@
     .fso a.discord-link:hover { opacity: 1; }
 
     /* BRAND PORTAL */
-    .brand-portal { position: fixed; inset: 0; z-index: 200; background: #0a0a0a; overflow-y: auto; transform: translateX(100%); transition: transform 0.65s cubic-bezier(0.76,0,0.24,1); }
+    .brand-portal { position: fixed; inset: 0; z-index: 200; background: var(--white); overflow-y: auto; transform: translateX(100%); transition: transform 0.65s cubic-bezier(0.76,0,0.24,1); }
     .brand-portal.open { transform: translateX(0); }
     body.portal-open { overflow: hidden; }
-    .portal-nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 52px; background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .portal-nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 24px 52px; background: rgba(250,250,250,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     .portal-nav-center { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-    .portal-label { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-    .portal-close { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: border-color 0.2s; }
-    .portal-close:hover { border-color: rgba(255,255,255,0.45); color: var(--white); }
-    .portal-hero { padding: 80px 52px 72px; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .portal-eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
-    .portal-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px,6.5vw,88px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 20px; color: var(--white); }
-    .portal-sub { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,0.4); max-width: 400px; }
+    .portal-label { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--grey-text); }
+    .portal-close { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid var(--border); color: var(--black); padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: border-color 0.2s; }
+    .portal-close:hover { border-color: var(--black); }
+    .portal-hero { padding: 80px 52px 72px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .portal-eyebrow { font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--grey-text); margin-bottom: 18px; }
+    .portal-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px,6.5vw,88px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 20px; color: var(--black); }
+    .portal-sub { font-size: 15px; line-height: 1.85; color: var(--grey-text); max-width: 400px; }
     .portal-values { display: flex; flex-direction: column; gap: 2px; }
-    .pval { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 22px 24px; display: flex; align-items: flex-start; gap: 14px; }
-    .pval-icon { width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; color: rgba(255,255,255,0.4); }
-    .pval-title { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 3px; }
-    .pval-desc { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; }
-    .portal-section { padding: 72px 52px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .portal-section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4vw,50px); letter-spacing: 0.02em; margin-bottom: 44px; color: var(--white); }
+    .pval { background: var(--warm); border: 1px solid var(--border); padding: 22px 24px; display: flex; align-items: flex-start; gap: 14px; }
+    .pval-icon { width: 24px; height: 24px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; color: var(--grey-text); }
+    .pval-title { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 3px; }
+    .pval-desc { font-size: 12px; color: var(--grey-text); line-height: 1.6; }
+    .portal-section { padding: 72px 52px; border-bottom: 1px solid var(--border); }
+    .portal-section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4vw,50px); letter-spacing: 0.02em; margin-bottom: 44px; color: var(--black); }
     .portal-how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .phow { background: rgba(255,255,255,0.03); padding: 44px 36px; position: relative; overflow: hidden; transition: background 0.3s; }
-    .phow:hover { background: rgba(255,255,255,0.05); }
-    .phow-n { font-family: 'Bebas Neue', sans-serif; font-size: 88px; color: rgba(255,255,255,0.04); position: absolute; top: 8px; right: 14px; line-height: 1; }
-    .phow-t { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; margin-bottom: 12px; color: var(--white); }
-    .phow-d { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.38); }
+    .phow { background: var(--warm); padding: 44px 36px; position: relative; overflow: hidden; transition: background 0.3s; }
+    .phow:hover { background: var(--warm2); }
+    .phow-n { font-family: 'Bebas Neue', sans-serif; font-size: 88px; color: rgba(0,0,0,0.05); position: absolute; top: 8px; right: 14px; line-height: 1; }
+    .phow-t { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; margin-bottom: 12px; color: var(--black); }
+    .phow-d { font-size: 14px; line-height: 1.85; color: #666; }
     .portal-apply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .apply-intro { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.38); margin-bottom: 32px; max-width: 400px; }
+    .apply-intro { font-size: 14px; line-height: 1.9; color: var(--grey-text); margin-bottom: 32px; max-width: 400px; }
     .pcriteria { display: flex; flex-direction: column; }
-    .pcrit { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .pcrit:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-    .pcrit-icon { width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 2px; color: rgba(255,255,255,0.35); }
-    .pcrit-t strong { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); margin-bottom: 3px; }
-    .pcrit-t span { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.6; }
+    .pcrit { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .pcrit:first-child { border-top: 1px solid var(--border); }
+    .pcrit-icon { width: 24px; height: 24px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 2px; color: var(--grey-text); }
+    .pcrit-t strong { display: block; font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 3px; }
+    .pcrit-t span { font-size: 13px; color: var(--grey-text); line-height: 1.6; }
     .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
     .fg { display: flex; flex-direction: column; }
     .fg label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 13px 16px 6px; background: rgba(255,255,255,0.04); }
@@ -533,10 +533,10 @@
     <nav class="portal-nav">
       <div class="portal-nav-center">
         <svg height="18" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#f0ede8"/>
-          <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#f0ede8" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#0a0a0a" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#f0ede8" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#f0ede8" stroke-width="17" fill="none"/></g>
-          <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#f0ede8"/>
-          <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#f0ede8"/>
+          <path d="M0 8h19L60 73V8h18V96H59L18 31V96H0V8Z" fill="#0a0a0a"/>
+          <g><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/><line x1="116" y1="88" x2="178" y2="16" stroke="#fafafa" stroke-width="20"/><line x1="118" y1="86" x2="176" y2="18" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/><ellipse cx="147" cy="52" rx="40" ry="45" stroke="#0a0a0a" stroke-width="17" fill="none"/></g>
+          <path d="M206 8h20l19 64 19.5-64h20l19.5 64L324 8h20l-28 88H295L276 34l-19 62h-21L206 8Z" fill="#0a0a0a"/>
+          <path d="M360 8h19l41 65V8h18V96h-19L378 31V96H360V8Z" fill="#0a0a0a"/>
         </svg>
         <span class="portal-label">For Brands</span>
       </div>
